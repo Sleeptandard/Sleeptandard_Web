@@ -4,7 +4,7 @@ import { CtaBanner } from '@/components/cta-banner'
 import { Target, Users, Sparkles } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Team | 알람의 정석',
+  title: 'Team | Sleeptandard',
   description:
     '더 나은 아침을 만드는 사람들, 슬립텐다드(Sleeptandard) 팀을 소개합니다.',
 }

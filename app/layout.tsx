@@ -7,18 +7,20 @@ import './globals.css'
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700', '900'],
+  weight: ['400', '700'],
+  display: 'swap',
   variable: '--font-noto-sans-kr',
 })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '700'],
+  display: 'swap',
   variable: '--font-space-grotesk',
 })
 
 export const metadata: Metadata = {
-  title: '알람의 정석 | Sleeptandard',
+  title: 'Sleeptandard',
   description:
     '수면 상태 기반 웨어러블 알람 패치. 실시간으로 수면 중 생체 신호를 분석해 최적의 기상 타이밍에 깨워드립니다.',
   generator: 'v0.app',

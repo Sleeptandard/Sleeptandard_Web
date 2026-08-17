@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Menu, X, Moon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -26,12 +27,14 @@ export function SiteHeader() {
           className="flex items-center gap-2"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 ring-1 ring-primary/30">
-            <Moon className="h-4 w-4 text-primary" aria-hidden="true" />
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight">
-            알람의 정석
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="Sleeptandard Logo"
+            width={160}
+            height={40}
+            priority
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

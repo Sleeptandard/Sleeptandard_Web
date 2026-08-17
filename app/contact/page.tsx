@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/contact-form'
 import { Mail, Building2, Clock, Camera } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Contact | 알람의 정석',
+  title: 'Contact | Sleeptandard',
   description:
     '슬립텐다드(Sleeptandard)에 궁금한 점을 문의하세요. 제휴, 투자, 언론 문의를 환영합니다.',
 }

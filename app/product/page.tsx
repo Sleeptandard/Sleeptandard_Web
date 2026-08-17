@@ -5,7 +5,7 @@ import { CtaBanner } from '@/components/cta-banner'
 import { HeartPulse, Wind, Moon, Vibrate } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: '제품 | 알람의 정석',
+  title: '제품 | Sleeptandard',
   description:
     '수면 중 생체 신호를 측정하고 최적의 기상 타이밍을 찾아주는 웨어러블 알람 패치의 스펙과 기능을 소개합니다.',
 }
@@ -48,7 +48,7 @@ export default function ProductPage() {
       <PageHeader
         eyebrow="Product"
         title="손톱만 한 패치, 밤새 켜진 수면 연구소"
-        description="알람의 정석은 붙이고 자는 것만으로 수면 데이터를 수집해, 매일 아침 당신에게 딱 맞는 기상 타이밍을 계산합니다."
+        description="Sleeptandard는 붙이고 자는 것만으로 수면 데이터를 수집해, 매일 아침 당신에게 딱 맞는 기상 타이밍을 계산합니다."
       />
 
       {/* Sensor grid */}

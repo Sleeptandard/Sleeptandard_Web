@@ -16,7 +16,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              수면 상태 기반 웨어러블 알람 패치 &lsquo;알람의 정석&rsquo;으로
+              수면 상태 기반 웨어러블 알람 패치 &lsquo;Sleeptandard&rsquo;로
               누구나 매일 개운한 아침을 시작할 수 있도록 만듭니다.
             </p>
           </div>
@@ -65,7 +65,7 @@ export function SiteFooter() {
             <p>상호명: 슬립텐다드(Sleeptandard)</p>
             <p>대표 이메일: sleeptandard@gmail.com</p>
           </div>
-          <p>Copyright © 2026 알람의 정석. All rights reserved.</p>
+          <p>Copyright &copy; 2026 Sleeptandard. All rights reserved.</p>
         </div>
       </div>
     </footer>

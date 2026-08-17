@@ -33,7 +33,7 @@ export function HowItWorks() {
             잠에서 깨는 순간까지, 데이터로 설계합니다
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-            알람의 정석은 정해진 시간에 억지로 깨우지 않습니다. 당신의 수면
+            Sleeptandard는 정해진 시간에 억지로 깨우지 않습니다. 당신의 수면
             리듬을 읽고, 가장 일어나기 좋은 순간을 스스로 찾아냅니다.
           </p>
         </div>

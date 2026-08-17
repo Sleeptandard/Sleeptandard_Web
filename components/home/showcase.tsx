@@ -30,7 +30,7 @@ export function Showcase() {
       <div className="grid items-center gap-12 md:grid-cols-2">
         <div className="order-2 md:order-1">
           <p className="font-display text-sm font-semibold uppercase tracking-widest text-primary">
-            Why 알람의 정석
+            Why Sleeptandard
           </p>
           <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
             작지만, 아침을 바꾸는 기술

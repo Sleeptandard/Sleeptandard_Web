@@ -4,9 +4,9 @@ import { ApplyForm } from '@/components/apply-form'
 import { Gift, Bell, Percent } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: '신청하기 | 알람의 정석',
+  title: '신청하기 | Sleeptandard',
   description:
-    '알람의 정석 사전 신청. 정식 출시 소식과 얼리버드 혜택을 가장 먼저 받아보세요.',
+    'Sleeptandard 사전 신청. 정식 출시 소식과 얼리버드 혜택을 가장 먼저 받아보세요.',
 }
 
 const PERKS = [
@@ -33,7 +33,7 @@ export default function ApplyPage() {
       <PageHeader
         eyebrow="Pre-order"
         title="가장 먼저 개운한 아침을"
-        description="알람의 정석은 지금 사전 신청을 받고 있습니다. 아래 정보를 남겨주시면 출시 소식과 얼리버드 혜택을 순차적으로 안내해 드릴게요."
+        description="Sleeptandard는 지금 사전 신청을 받고 있습니다. 아래 정보를 남겨주시면 출시 소식과 얼리버드 혜택을 순차적으로 안내해 드릴게요."
       />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-20">
