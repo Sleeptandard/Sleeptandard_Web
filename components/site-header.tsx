@@ -30,10 +30,10 @@ export function SiteHeader() {
           <Image
             src="/images/logo.png"
             alt="Sleeptandard Logo"
-            width={160}
-            height={40}
+            width={320}
+            height={80}
             priority
-            className="h-8 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </Link>
 
