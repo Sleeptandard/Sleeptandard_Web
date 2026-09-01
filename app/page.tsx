@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
@@ -50,23 +51,33 @@ export default function HomePage() {
 
       {/* 3. Team Summary Section */}
       <section className="flex h-screen w-full snap-start flex-col items-center justify-center bg-background px-5 pt-16">
-        <div className="max-w-4xl text-center">
-          <p className="font-display text-sm font-semibold uppercase tracking-widest text-primary">
-            Team
-          </p>
-          <h2 className="mt-4 text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            전문성과 열정을 갖춘 팀
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
-            수면 공학, 하드웨어 엔지니어링, 소프트웨어 개발 분야의 전문가 5인이 모여 더 나은 아침을 만들기 위해 치열하게 고민하고 연구합니다.
-          </p>
-          <Link
-            href="/team"
-            className="mt-8 group inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-          >
-            Sleeptandard 팀 만나보기
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+        <div className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-2 md:gap-12">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border/50 shadow-2xl">
+            <Image
+              src="/images/team/team6.jpg"
+              alt="Sleeptandard Team"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="text-left">
+            <p className="font-display text-sm font-semibold uppercase tracking-widest text-primary">
+              Team
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              전문성과 열정을 갖춘 팀
+            </h2>
+            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              수면 공학, 하드웨어 엔지니어링, 소프트웨어 개발 분야의 전문가 5인이 모여 더 나은 아침을 만들기 위해 치열하게 고민하고 연구합니다.
+            </p>
+            <Link
+              href="/team"
+              className="mt-6 group inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              Sleeptandard 팀 만나보기
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -38,6 +38,18 @@ export default function TeamPage() {
   return (
     <main className="min-h-screen pt-24 pb-16">
       <div className="mx-auto max-w-6xl px-5">
+        {/* Team Banner / Group Image (Team1.jpg) */}
+        <div className="relative mb-12 h-64 w-full overflow-hidden rounded-3xl sm:h-80 md:h-96 shadow-2xl">
+          <Image
+            src="/images/team/Team1.jpg"
+            alt="Sleeptandard Team"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+        </div>
+
         <div className="text-center">
           <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
             Meet Our Team
