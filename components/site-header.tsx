@@ -8,11 +8,10 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { href: '/', label: '홈' },
-  { href: '/product', label: '제품' },
+  { href: '/product', label: 'Product' },
   { href: '/team', label: 'Team' },
-  { href: '/apply', label: '신청하기' },
   { href: '/contact', label: 'Contact' },
+  { href: '/apply', label: 'Apply' },
 ]
 
 export function SiteHeader() {
@@ -28,7 +27,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/images/logo.png"
+            src="/images/logo/logo.png"
             alt="Sleeptandard Logo"
             width={320}
             height={80}
@@ -61,12 +60,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden md:block">
-          <Link
-            href="/apply"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            사전 신청
-          </Link>
+          {/* Apply button is now part of the nav links or we can keep it as a highlighted CTA. I'll remove it since user requested 4 items. */}
         </div>
 
         <button
@@ -104,13 +98,7 @@ export function SiteHeader() {
                 </Link>
               )
             })}
-            <Link
-              href="/apply"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground"
-            >
-              사전 신청
-            </Link>
+
           </nav>
         </div>
       )}
