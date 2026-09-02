@@ -39,15 +39,15 @@ export default function TeamPage() {
     <main className="min-h-screen pt-24 pb-16">
       <div className="mx-auto max-w-6xl px-5">
         {/* Team Banner / Group Image (Team1.jpg) */}
-        <div className="relative mb-12 h-64 w-full overflow-hidden rounded-3xl sm:h-80 md:h-96 shadow-2xl">
+        <div className="relative mb-12 w-full overflow-hidden rounded-3xl border border-border/50 shadow-2xl bg-secondary/10">
           <Image
             src="/images/team/Team1.jpg"
             alt="Sleeptandard Team"
-            fill
+            width={1920}
+            height={1080}
             priority
-            className="object-cover"
+            className="w-full h-auto object-contain rounded-3xl"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
         </div>
 
         <div className="text-center">

@@ -52,12 +52,13 @@ export default function HomePage() {
       {/* 3. Team Summary Section */}
       <section className="flex h-screen w-full snap-start flex-col items-center justify-center bg-background px-5 pt-16">
         <div className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-2 md:gap-12">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border/50 shadow-2xl">
+          <div className="relative w-full overflow-hidden rounded-3xl border border-border/50 shadow-2xl bg-secondary/10 flex items-center justify-center">
             <Image
               src="/images/team/team6.jpg"
               alt="Sleeptandard Team"
-              fill
-              className="object-cover"
+              width={1200}
+              height={900}
+              className="w-full h-auto object-contain rounded-3xl"
             />
           </div>
           <div className="text-left">
