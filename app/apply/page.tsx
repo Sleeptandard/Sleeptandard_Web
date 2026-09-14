@@ -54,7 +54,7 @@ export default function ApplyPage() {
                   placeholder="홍길동"
                 />
               </div>
-              
+
               <div className="grid gap-2">
                 <label htmlFor="email" className="text-sm font-medium">이메일</label>
                 <input
@@ -65,7 +65,7 @@ export default function ApplyPage() {
                   placeholder="hello@example.com"
                 />
               </div>
-              
+
               <div className="grid gap-2">
                 <label htmlFor="phone" className="text-sm font-medium">전화번호</label>
                 <input
