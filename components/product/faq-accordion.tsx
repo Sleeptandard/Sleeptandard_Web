@@ -39,7 +39,7 @@ export function ProductFaqAccordion() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-xl space-y-3">
+    <div className="mx-auto w-full max-w-2xl md:max-w-3xl space-y-3.5">
       {FAQ_LIST.map((item, idx) => {
         const isOpen = openIndex === idx
         return (

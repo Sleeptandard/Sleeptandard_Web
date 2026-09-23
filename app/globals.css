@@ -4,6 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -24,9 +26,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-noto-sans-kr),
-    'Noto Sans KR', sans-serif;
+  --font-sans: 'Pretendard', var(--font-noto-sans-kr), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --font-display: 'Pretendard', var(--font-space-grotesk), var(--font-noto-sans-kr), sans-serif;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
