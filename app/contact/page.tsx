@@ -24,7 +24,7 @@ export default function ContactPage() {
     if (errorMessage) setErrorMessage('')
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!formData.name.trim()) {
