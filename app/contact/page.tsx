@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, CheckCircle2, MessageCircle } from 'lucide-react'
+import { Check, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function ContactPage() {
