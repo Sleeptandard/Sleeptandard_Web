@@ -45,12 +45,31 @@ export default function ContactPage() {
     }
 
     setIsSubmitting(true)
+    setErrorMessage('')
 
-    // Simulate submission delay
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || '문의 접수에 실패했습니다. 다시 시도해주세요.')
+      }
+
       setSubmitted(true)
-    }, 800)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMessage(err.message)
+      } else {
+        setErrorMessage('오류가 발생했습니다. 다시 시도해주세요.')
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleReset = () => {
@@ -242,7 +261,7 @@ export default function ContactPage() {
 
               <div className="mt-5 flex justify-center">
                 <a
-                  href="https://pf.kakao.com"
+                  href="http://pf.kakao.com/_xoQGwX/chat"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FEE500] px-6 py-3 text-xs sm:text-sm font-bold text-[#191919] shadow-sm hover:bg-[#fade0a] hover:scale-[1.02] active:scale-[0.98] transition-all"

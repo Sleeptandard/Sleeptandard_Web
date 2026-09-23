@@ -40,7 +40,7 @@ export function SiteFooter() {
               <h3 className="text-sm font-semibold text-foreground">연결</h3>
               <div className="mt-4 flex gap-3">
                 <a
-                  href="mailto:sleeptandard@gmail.com"
+                  href="mailto:contact@sleeptandard.com"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:text-foreground"
                   aria-label="이메일"
                 >
@@ -63,7 +63,7 @@ export function SiteFooter() {
         <div className="mt-12 flex flex-col gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p>상호명: 슬립텐다드(Sleeptandard)</p>
-            <p>대표 이메일: sleeptandard@gmail.com</p>
+            <p>대표 이메일: contact@sleeptandard.com</p>
           </div>
           <p>Copyright &copy; 2026 Sleeptandard. All rights reserved.</p>
         </div>
