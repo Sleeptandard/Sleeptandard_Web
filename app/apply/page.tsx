@@ -37,7 +37,7 @@ export default function ApplyPage() {
   const [betaSubmitting, setBetaSubmitting] = useState(false)
 
   // Newsletter Submit Handler
-  const handleNlSubmit = (e: React.FormEvent) => {
+  const handleNlSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!nlForm.name.trim()) {
       setNlError('이름을 입력해주세요.')
@@ -57,14 +57,39 @@ export default function ApplyPage() {
     }
 
     setNlSubmitting(true)
-    setTimeout(() => {
-      setNlSubmitting(false)
+    setNlError('')
+
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: '뉴스레터',
+          name: nlForm.name,
+          email: nlForm.email,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.error || '신청 접수에 실패했습니다. 다시 시도해주세요.')
+      }
+
       setView('newsletter_done')
-    }, 600)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setNlError(err.message)
+      } else {
+        setNlError('오류가 발생했습니다. 다시 시도해주세요.')
+      }
+    } finally {
+      setNlSubmitting(false)
+    }
   }
 
   // Beta Test Submit Handler
-  const handleBetaSubmit = (e: React.FormEvent) => {
+  const handleBetaSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!betaForm.name.trim()) {
       setBetaError('이름을 입력해주세요.')
@@ -80,10 +105,35 @@ export default function ApplyPage() {
     }
 
     setBetaSubmitting(true)
-    setTimeout(() => {
-      setBetaSubmitting(false)
+    setBetaError('')
+
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: '베타테스트',
+          name: betaForm.name,
+          phone: betaForm.phone,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.error || '신청 접수에 실패했습니다. 다시 시도해주세요.')
+      }
+
       setView('betatest_done')
-    }, 600)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setBetaError(err.message)
+      } else {
+        setBetaError('오류가 발생했습니다. 다시 시도해주세요.')
+      }
+    } finally {
+      setBetaSubmitting(false)
+    }
   }
 
   return (
