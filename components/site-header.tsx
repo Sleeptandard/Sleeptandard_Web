@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
@@ -17,22 +16,46 @@ const NAV_LINKS = [
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const useDarkHeader =
+    pathname === '/' ||
+    pathname.startsWith('/team') ||
+    pathname.startsWith('/apply')
+
+  const headerGradient = useDarkHeader
+    ? 'linear-gradient(135deg, rgba(5, 12, 22, 0.6) 0%, rgba(4, 47, 86, 0.8) 100%)'
+    : 'linear-gradient(135deg, rgba(245, 245, 245, 0.6) 0%, rgba(245, 245, 245, 0.8) 100%)'
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl',
+        useDarkHeader ? 'border-white/10' : 'border-[#042F56]/10',
+      )}
+      style={{ backgroundImage: headerGradient }}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link
           href="/"
-          className="flex items-center gap-2"
+          className="flex items-center"
           onClick={() => setOpen(false)}
+          aria-label="Sleeptandard 홈"
         >
-          <Image
-            src="/images/logo/logo.png"
-            alt="Sleeptandard Logo"
-            width={320}
-            height={80}
-            priority
-            className="h-12 w-auto object-contain"
+          <span
+            aria-hidden="true"
+            className={cn(
+              'block h-[37px] w-32 transition-colors',
+              useDarkHeader ? 'bg-white' : 'bg-[#042F56]',
+            )}
+            style={{
+              WebkitMaskImage: 'url(/images/logo/logo.svg)',
+              maskImage: 'url(/images/logo/logo.svg)',
+              WebkitMaskPosition: 'center',
+              maskPosition: 'center',
+              WebkitMaskRepeat: 'no-repeat',
+              maskRepeat: 'no-repeat',
+              WebkitMaskSize: 'contain',
+              maskSize: 'contain',
+            }}
           />
         </Link>
 
@@ -48,9 +71,13 @@ export function SiteHeader() {
                 href={link.href}
                 className={cn(
                   'rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                  active
-                    ? 'bg-secondary text-foreground'
-                    : 'text-muted-foreground hover:text-foreground',
+                  useDarkHeader
+                    ? active
+                      ? 'bg-white/10 text-white'
+                      : 'text-white/70 hover:text-white'
+                    : active
+                      ? 'bg-[#042F56]/10 text-[#042F56]'
+                      : 'text-[#042F56]/70 hover:text-[#042F56]',
                 )}
               >
                 {link.label}
@@ -65,7 +92,10 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full text-foreground md:hidden"
+          className={cn(
+            'flex h-10 w-10 items-center justify-center rounded-full md:hidden',
+            useDarkHeader ? 'text-white' : 'text-[#042F56]',
+          )}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={open}
@@ -75,7 +105,14 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-border/60 bg-background/95 px-5 py-4 md:hidden">
+        <div
+          className={cn(
+            'border-t px-5 py-4 backdrop-blur-xl md:hidden',
+            useDarkHeader
+              ? 'border-white/10 bg-[#050C16]/95'
+              : 'border-[#042F56]/10 bg-[#F5F5F5]/95',
+          )}
+        >
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const active =
@@ -89,9 +126,13 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     'rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                    active
-                      ? 'bg-secondary text-foreground'
-                      : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground',
+                    useDarkHeader
+                      ? active
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/70 hover:bg-white/5 hover:text-white'
+                      : active
+                        ? 'bg-[#042F56]/10 text-[#042F56]'
+                        : 'text-[#042F56]/70 hover:bg-[#042F56]/5 hover:text-[#042F56]',
                   )}
                 >
                   {link.label}
