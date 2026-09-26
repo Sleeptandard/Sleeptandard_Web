@@ -27,12 +27,15 @@
 
   /* Sleeptandard brand colors */
   --color-Key: var(--Key);
+  --color-KeyReal: var(--KeyReal);
   --color-White: var(--White);
   --color-SkyBlue: var(--SkyBlue);
   --color-Red: var(--Red);
   --color-Green: var(--Green);
   --color-Yellow: var(--Yellow);
   --color-RedWarning: var(--RedWarning);
+  --color-Gray: var(--Gray);
+  --color-Gray2: var(--Gray2);
 
   --font-sans: 'Pretendard', var(--font-noto-sans-kr), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   --font-display: 'Pretendard', var(--font-space-grotesk), var(--font-noto-sans-kr), sans-serif;
@@ -79,12 +82,15 @@
 
   /* Sleeptandard brand colors */
   --Key: #050c16;
+  --KeyReal: #042f56;
   --White: #f1f2f3;
   --SkyBlue: #c2e4e9;
   --Red: #ff5967;
   --Green: #59ff85;
   --Yellow: #ffe359;
   --RedWarning: #e05a5a;
+  --Gray: #767676;
+  --Gray2: #c7c7c7;
 
   --radius: 0.75rem;
 }

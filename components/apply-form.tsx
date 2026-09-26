@@ -1,174 +1,235 @@
 'use client'
 
-import { useState } from 'react'
-import { Check, Loader2 } from 'lucide-react'
+import { useState, type FormEvent } from 'react'
 
-const PLANS = [
-  { id: 'single', label: '1개 (본인용)' },
-  { id: 'pair', label: '2개 (커플·가족)' },
-  { id: 'undecided', label: '아직 미정' },
-]
+import { FormInputField } from '@/components/ui/form-input-field'
+import { TermsWithCheckBox2 } from '@/components/ui/terms-with-check-box2'
 
-export function ApplyForm() {
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [plan, setPlan] = useState('single')
+type ApplyFormProps = {
+  type: 'newsletter' | 'betatest'
+  onSuccess: () => void
+}
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setLoading(true)
-    // Simulate a request; wire to a backend/action when ready.
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 900)
+type ApplyFormErrors = Partial<
+  Record<'name' | 'email' | 'phone' | 'privacy' | 'marketing', string>
+>
+
+const privacyTerms = `Sleeptandard(이하 "운영팀")는 「개인정보 보호법」에 따라 개발 소식 안내를 위해 아래와 같이 개인정보를 수집·이용합니다.
+
+1. 수집하는 개인정보 항목
+
+- 이름
+- 이메일 주소
+
+2. 개인정보의 수집·이용 목적
+
+개발 소식 및 서비스 관련 안내 제공
+뉴스레터 발송
+출시 일정 및 주요 업데이트 안내
+
+3. 개인정보의 보유 및 이용 기간
+수집된 개인정보는 정보주체가 수신을 거부하거나 동의를 철회할 때까지 보관·이용하며, 동의 철회 시 지체 없이 파기합니다.
+다만, 관계 법령에 따라 보관이 필요한 경우에는 해당 법령에서 정한 기간 동안 보관합니다.
+
+4. 동의 거부 권리 및 불이익
+귀하는 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다.
+다만, 동의를 거부하실 경우 개발 소식 및 뉴스레터를 받아보실 수 없습니다.`
+
+const marketingTerms = `Sleeptandard(이하 "운영팀")는 이메일을 통해 제품 개발 소식, 베타테스터 모집, 서비스 출시 안내 등 광고성 정보를 포함한 이메일을 발송할 수 있습니다.
+
+광고성 정보가 포함된 이메일은 관련 법령에 따라 제목에 (광고)를 표시하여 발송됩니다.
+
+광고성 정보 수신에 동의하지 않을 경우 개발 소식 이메일 서비스를 이용하실 수 없습니다.
+
+이메일 수신을 원하지 않는 경우, 운영팀으로의 요청을 통해 언제든지 수신을 거부하실 수 있습니다.`
+
+export function ApplyForm({ type, onSuccess }: ApplyFormProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  })
+  const [privacyAgreed, setPrivacyAgreed] = useState(false)
+  const [marketingAgreed, setMarketingAgreed] = useState(false)
+  const [errors, setErrors] = useState<ApplyFormErrors>({})
+  const [submitError, setSubmitError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const updateField = (field: 'name' | 'email' | 'phone', value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }))
+    setErrors((current) => ({ ...current, [field]: undefined }))
+    setSubmitError('')
   }
 
-  if (submitted) {
-    return (
-      <div className="rounded-3xl border border-border bg-card/40 p-8 text-center md:p-12">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/15 ring-1 ring-primary/30">
-          <Check className="h-7 w-7 text-primary" aria-hidden="true" />
-        </div>
-        <h2 className="mt-6 font-display text-2xl font-bold">
-          사전 신청이 완료되었어요
-        </h2>
-        <p className="mx-auto mt-3 max-w-md text-pretty leading-relaxed text-muted-foreground">
-          정식 출시 소식과 얼리버드 혜택을 입력하신 이메일로 가장 먼저
-          보내드릴게요. 개운한 아침을 기대해 주세요.
-        </p>
-      </div>
-    )
+  const validate = () => {
+    const nextErrors: ApplyFormErrors = {}
+
+    if (!formData.name.trim()) {
+      nextErrors.name = '이름을 입력해주세요.'
+    }
+
+    if (
+      type === 'newsletter' &&
+      (!formData.email.trim() || !formData.email.includes('@'))
+    ) {
+      nextErrors.email = '올바른 이메일 주소를 입력해주세요.'
+    }
+
+    if (type === 'betatest' && !formData.phone.trim()) {
+      nextErrors.phone = '전화번호를 입력해주세요.'
+    }
+
+    if (!privacyAgreed) {
+      nextErrors.privacy = '개인정보 수집 및 이용에 동의해주세요.'
+    }
+
+    if (type === 'newsletter' && !marketingAgreed) {
+      nextErrors.marketing = '광고성 정보 수신에 동의해주세요.'
+    }
+
+    setErrors(nextErrors)
+    return nextErrors
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const nextErrors = validate()
+    const firstError = Object.values(nextErrors)[0]
+
+    if (firstError) {
+      setSubmitError(firstError)
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitError('')
+
+    try {
+      const response = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: type === 'newsletter' ? '뉴스레터' : '베타테스트',
+          name: formData.name,
+          email: type === 'newsletter' ? formData.email : '',
+          phone: type === 'betatest' ? formData.phone : '',
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || '신청 접수에 실패했습니다. 다시 시도해주세요.',
+        )
+      }
+
+      onSuccess()
+    } catch (error: unknown) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : '오류가 발생했습니다. 다시 시도해주세요.',
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-3xl border border-border bg-card/40 p-6 md:p-8"
-    >
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="이름" htmlFor="name">
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            placeholder="홍길동"
-            className={inputClass}
-          />
-        </Field>
-        <Field label="연락처" htmlFor="phone">
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            placeholder="010-1234-5678"
-            className={inputClass}
-          />
-        </Field>
-      </div>
+    <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
+      <FormInputField
+        id={`${type}-name`}
+        name="name"
+        title="이름"
+        isRequired
+        placeholder={errors.name ?? '이름을 입력해주세요'}
+        value={formData.name}
+        onChange={(event) => updateField('name', event.target.value)}
+        alert={Boolean(errors.name)}
+        autoComplete="name"
+      />
 
-      <div className="mt-5">
-        <Field label="이메일" htmlFor="email">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            placeholder="you@example.com"
-            className={inputClass}
-          />
-        </Field>
-      </div>
-
-      <div className="mt-6">
-        <span className="mb-2 block text-sm font-medium text-foreground">
-          희망 수량
-        </span>
-        <div className="grid gap-2.5 sm:grid-cols-3">
-          {PLANS.map((p) => {
-            const active = plan === p.id
-            return (
-              <button
-                type="button"
-                key={p.id}
-                onClick={() => setPlan(p.id)}
-                aria-pressed={active}
-                className={`rounded-xl border px-4 py-3 text-sm font-medium transition-colors ${
-                  active
-                    ? 'border-primary bg-primary/12 text-foreground'
-                    : 'border-border bg-background/60 text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {p.label}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      <div className="mt-5">
-        <Field label="하고 싶은 말 (선택)" htmlFor="message">
-          <textarea
-            id="message"
-            name="message"
-            rows={3}
-            placeholder="평소 기상 고민이나 기대하는 점을 알려주세요."
-            className={`${inputClass} resize-none`}
-          />
-        </Field>
-      </div>
-
-      <label className="mt-6 flex items-start gap-3 text-sm text-muted-foreground">
-        <input
-          type="checkbox"
-          required
-          className="mt-0.5 h-4 w-4 rounded border-border accent-[oklch(0.66_0.15_264)]"
+      {type === 'newsletter' ? (
+        <FormInputField
+          id="newsletter-email"
+          name="email"
+          type="email"
+          title="이메일"
+          isRequired
+          placeholder={
+            errors.email ?? '개발 소식을 받아볼 이메일을 입력해주세요'
+          }
+          value={formData.email}
+          onChange={(event) => updateField('email', event.target.value)}
+          alert={Boolean(errors.email)}
+          autoComplete="email"
         />
-        <span>
-          개인정보 수집 및 이용에 동의합니다. (사전 신청 안내 목적)
-        </span>
-      </label>
+      ) : (
+        <FormInputField
+          id="betatest-phone"
+          name="phone"
+          type="tel"
+          title="전화번호"
+          isRequired
+          placeholder={
+            errors.phone ?? '베타테스트 안내를 받을 전화번호를 입력해주세요'
+          }
+          value={formData.phone}
+          onChange={(event) => updateField('phone', event.target.value)}
+          alert={Boolean(errors.phone)}
+          autoComplete="tel"
+        />
+      )}
+
+      <TermsWithCheckBox2
+        isRequired
+        title="개인정보 수집 및 이용에 동의합니다"
+        termsTextBox2={privacyTerms}
+        checked={privacyAgreed}
+        onCheckedChange={(checked) => {
+          setPrivacyAgreed(checked)
+          setErrors((current) => ({ ...current, privacy: undefined }))
+          setSubmitError('')
+        }}
+        defaultOpen={type === 'newsletter'}
+        alert={Boolean(errors.privacy)}
+        name="privacyAgreement"
+      />
+
+      {type === 'newsletter' && (
+        <TermsWithCheckBox2
+          isRequired
+          title="광고성 정보 수신 동의"
+          termsTextBox2={marketingTerms}
+          checked={marketingAgreed}
+          onCheckedChange={(checked) => {
+            setMarketingAgreed(checked)
+            setErrors((current) => ({ ...current, marketing: undefined }))
+            setSubmitError('')
+          }}
+          alert={Boolean(errors.marketing)}
+          name="marketingAgreement"
+        />
+      )}
+
+      {submitError && (
+        <p role="alert" className="text-[13px] font-medium text-Red">
+          {submitError}
+        </p>
+      )}
 
       <button
         type="submit"
-        disabled={loading}
-        className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
+        disabled={isSubmitting}
+        className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-KeyReal text-sm font-bold text-white shadow-md transition-all hover:bg-[#073f72] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
       >
-        {loading ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" />
-            신청 중...
-          </>
-        ) : (
-          '사전 신청 완료하기'
+        {isSubmitting && (
+          <span className="size-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
         )}
+        {isSubmitting ? '접수 중...' : '제출하기'}
       </button>
     </form>
-  )
-}
-
-const inputClass =
-  'w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary'
-
-function Field({
-  label,
-  htmlFor,
-  children,
-}: {
-  label: string
-  htmlFor: string
-  children: React.ReactNode
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={htmlFor}
-        className="mb-2 block text-sm font-medium text-foreground"
-      >
-        {label}
-      </label>
-      {children}
-    </div>
   )
 }

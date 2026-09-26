@@ -5,13 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Check,
   ChevronRight,
   Sparkles,
   Users,
   Calendar,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { ApplyForm } from '@/components/apply-form'
 
 type ApplyView =
   | 'hub'
@@ -22,119 +21,6 @@ type ApplyView =
 
 export default function ApplyPage() {
   const [view, setView] = useState<ApplyView>('hub')
-
-  // Newsletter Form State
-  const [nlForm, setNlForm] = useState({ name: '', email: '' })
-  const [nlPrivacyAgreed, setNlPrivacyAgreed] = useState(false)
-  const [nlMarketingAgreed, setNlMarketingAgreed] = useState(false)
-  const [nlError, setNlError] = useState('')
-  const [nlSubmitting, setNlSubmitting] = useState(false)
-
-  // Beta Test Form State
-  const [betaForm, setBetaForm] = useState({ name: '', phone: '' })
-  const [betaPrivacyAgreed, setBetaPrivacyAgreed] = useState(false)
-  const [betaError, setBetaError] = useState('')
-  const [betaSubmitting, setBetaSubmitting] = useState(false)
-
-  // Newsletter Submit Handler
-  const handleNlSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!nlForm.name.trim()) {
-      setNlError('이름을 입력해주세요.')
-      return
-    }
-    if (!nlForm.email.trim() || !nlForm.email.includes('@')) {
-      setNlError('올바른 이메일 주소를 입력해주세요.')
-      return
-    }
-    if (!nlPrivacyAgreed) {
-      setNlError('개인정보 수집 및 이용에 동의해주세요.')
-      return
-    }
-    if (!nlMarketingAgreed) {
-      setNlError('광고성 정보 수신에 동의해주세요.')
-      return
-    }
-
-    setNlSubmitting(true)
-    setNlError('')
-
-    try {
-      const res = await fetch('/api/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: '뉴스레터',
-          name: nlForm.name,
-          email: nlForm.email,
-        }),
-      })
-
-      const data = await res.json()
-      if (!res.ok) {
-        throw new Error(data.error || '신청 접수에 실패했습니다. 다시 시도해주세요.')
-      }
-
-      setView('newsletter_done')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setNlError(err.message)
-      } else {
-        setNlError('오류가 발생했습니다. 다시 시도해주세요.')
-      }
-    } finally {
-      setNlSubmitting(false)
-    }
-  }
-
-  // Beta Test Submit Handler
-  const handleBetaSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!betaForm.name.trim()) {
-      setBetaError('이름을 입력해주세요.')
-      return
-    }
-    if (!betaForm.phone.trim()) {
-      setBetaError('전화번호를 입력해주세요.')
-      return
-    }
-    if (!betaPrivacyAgreed) {
-      setBetaError('개인정보 수집 및 이용에 동의해주세요.')
-      return
-    }
-
-    setBetaSubmitting(true)
-    setBetaError('')
-
-    try {
-      const res = await fetch('/api/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: '베타테스트',
-          name: betaForm.name,
-          phone: betaForm.phone,
-        }),
-      })
-
-      const data = await res.json()
-      if (!res.ok) {
-        throw new Error(data.error || '신청 접수에 실패했습니다. 다시 시도해주세요.')
-      }
-
-      setView('betatest_done')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setBetaError(err.message)
-      } else {
-        setBetaError('오류가 발생했습니다. 다시 시도해주세요.')
-      }
-    } finally {
-      setBetaSubmitting(false)
-    }
-  }
 
   return (
     <main className="min-h-screen bg-[#f5f5f5] pt-28 pb-20 sm:pt-36 sm:pb-28 px-5">
@@ -296,119 +182,13 @@ export default function ApplyPage() {
               </div>
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleNlSubmit} className="mt-8 space-y-5">
-              <div>
-                <label
-                  htmlFor="nl-name"
-                  className="block text-xs sm:text-sm font-bold text-slate-800 mb-2"
-                >
-                  이름 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="nl-name"
-                  type="text"
-                  required
-                  placeholder="이름을 입력해주세요"
-                  value={nlForm.name}
-                  onChange={(e) => {
-                    setNlForm({ ...nlForm, name: e.target.value })
-                    if (nlError) setNlError('')
-                  }}
-                  className="w-full h-13 px-4 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#042f56] focus:outline-none focus:ring-1 focus:ring-[#042f56] text-sm sm:text-base transition-colors"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="nl-email"
-                  className="block text-xs sm:text-sm font-bold text-slate-800 mb-2"
-                >
-                  이메일 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="nl-email"
-                  type="email"
-                  required
-                  placeholder="개발 소식을 받아볼 이메일을 입력해주세요"
-                  value={nlForm.email}
-                  onChange={(e) => {
-                    setNlForm({ ...nlForm, email: e.target.value })
-                    if (nlError) setNlError('')
-                  }}
-                  className="w-full h-13 px-4 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#042f56] focus:outline-none focus:ring-1 focus:ring-[#042f56] text-sm sm:text-base transition-colors"
-                />
-              </div>
-
-              {/* Consent 1: Privacy */}
-              <div
-                onClick={() => setNlPrivacyAgreed(!nlPrivacyAgreed)}
-                className="flex items-center justify-between cursor-pointer select-none rounded-xl p-2 hover:bg-slate-200/50 transition-colors"
-              >
-                <span className="text-xs sm:text-sm font-bold text-slate-800">
-                  [필수] 개인정보 수집 및 이용에 동의합니다
-                </span>
-                <button
-                  type="button"
-                  aria-checked={nlPrivacyAgreed}
-                  role="checkbox"
-                  className={cn(
-                    'flex h-6 w-6 items-center justify-center rounded-md border transition-colors',
-                    nlPrivacyAgreed
-                      ? 'bg-[#042f56] border-[#042f56] text-white'
-                      : 'border-slate-300 bg-white text-transparent'
-                  )}
-                >
-                  <Check className="h-4 w-4 stroke-[3]" />
-                </button>
-              </div>
-
-              {/* Consent 2: Marketing */}
-              <div
-                onClick={() => setNlMarketingAgreed(!nlMarketingAgreed)}
-                className="flex items-center justify-between cursor-pointer select-none rounded-xl p-2 hover:bg-slate-200/50 transition-colors"
-              >
-                <span className="text-xs sm:text-sm font-bold text-slate-800">
-                  [필수] 광고성 정보 수신 동의
-                </span>
-                <button
-                  type="button"
-                  aria-checked={nlMarketingAgreed}
-                  role="checkbox"
-                  className={cn(
-                    'flex h-6 w-6 items-center justify-center rounded-md border transition-colors',
-                    nlMarketingAgreed
-                      ? 'bg-[#042f56] border-[#042f56] text-white'
-                      : 'border-slate-300 bg-white text-transparent'
-                  )}
-                >
-                  <Check className="h-4 w-4 stroke-[3]" />
-                </button>
-              </div>
-
-              {/* Error Message */}
-              {nlError && (
-                <p className="text-xs sm:text-sm font-medium text-red-600">
-                  {nlError}
-                </p>
-              )}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={nlSubmitting}
-                className="w-full h-14 rounded-full bg-[#042f56] text-white font-bold text-sm sm:text-base shadow-md hover:bg-[#073f72] active:scale-[0.99] transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-4"
-              >
-                {nlSubmitting ? (
-                  <>
-                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                    <span>접수 중...</span>
-                  </>
-                ) : (
-                  <span>제출하기</span>
-                )}
-              </button>
-            </form>
+            <ApplyForm
+              type="newsletter"
+              onSuccess={() => {
+                setView('newsletter_done')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            />
           </div>
         )}
 
@@ -530,96 +310,13 @@ export default function ApplyPage() {
               참여방법을 개별 안내드립니다
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleBetaSubmit} className="mt-8 space-y-5">
-              <div>
-                <label
-                  htmlFor="beta-name"
-                  className="block text-xs sm:text-sm font-bold text-slate-800 mb-2"
-                >
-                  이름 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="beta-name"
-                  type="text"
-                  required
-                  placeholder="이름을 입력해주세요"
-                  value={betaForm.name}
-                  onChange={(e) => {
-                    setBetaForm({ ...betaForm, name: e.target.value })
-                    if (betaError) setBetaError('')
-                  }}
-                  className="w-full h-13 px-4 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#042f56] focus:outline-none focus:ring-1 focus:ring-[#042f56] text-sm sm:text-base transition-colors"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="beta-phone"
-                  className="block text-xs sm:text-sm font-bold text-slate-800 mb-2"
-                >
-                  전화번호 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="beta-phone"
-                  type="tel"
-                  required
-                  placeholder="베타테스트 안내를 받을 전화번호를 입력해주세요"
-                  value={betaForm.phone}
-                  onChange={(e) => {
-                    setBetaForm({ ...betaForm, phone: e.target.value })
-                    if (betaError) setBetaError('')
-                  }}
-                  className="w-full h-13 px-4 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#042f56] focus:outline-none focus:ring-1 focus:ring-[#042f56] text-sm sm:text-base transition-colors"
-                />
-              </div>
-
-              {/* Consent: Privacy */}
-              <div
-                onClick={() => setBetaPrivacyAgreed(!betaPrivacyAgreed)}
-                className="flex items-center justify-between cursor-pointer select-none rounded-xl p-2 hover:bg-slate-200/50 transition-colors"
-              >
-                <span className="text-xs sm:text-sm font-bold text-slate-800">
-                  [필수] 개인정보 수집 및 이용에 동의합니다
-                </span>
-                <button
-                  type="button"
-                  aria-checked={betaPrivacyAgreed}
-                  role="checkbox"
-                  className={cn(
-                    'flex h-6 w-6 items-center justify-center rounded-md border transition-colors',
-                    betaPrivacyAgreed
-                      ? 'bg-[#042f56] border-[#042f56] text-white'
-                      : 'border-slate-300 bg-white text-transparent'
-                  )}
-                >
-                  <Check className="h-4 w-4 stroke-[3]" />
-                </button>
-              </div>
-
-              {/* Error Message */}
-              {betaError && (
-                <p className="text-xs sm:text-sm font-medium text-red-600">
-                  {betaError}
-                </p>
-              )}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={betaSubmitting}
-                className="w-full h-14 rounded-full bg-[#042f56] text-white font-bold text-sm sm:text-base shadow-md hover:bg-[#073f72] active:scale-[0.99] transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-4"
-              >
-                {betaSubmitting ? (
-                  <>
-                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                    <span>접수 중...</span>
-                  </>
-                ) : (
-                  <span>제출하기</span>
-                )}
-              </button>
-            </form>
+            <ApplyForm
+              type="betatest"
+              onSuccess={() => {
+                setView('betatest_done')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            />
           </div>
         )}
 
