@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -16,22 +16,89 @@ const NAV_LINKS = [
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const lastScrollTop = useRef(0)
+  const lastTouchY = useRef<number | null>(null)
   const useDarkHeader =
     pathname === '/' ||
     pathname.startsWith('/team') ||
     pathname.startsWith('/apply')
 
-  const headerGradient = useDarkHeader
-    ? 'linear-gradient(135deg, rgba(5, 12, 22, 0.6) 0%, rgba(4, 47, 86, 0.8) 100%)'
-    : 'linear-gradient(135deg, rgba(245, 245, 245, 0.6) 0%, rgba(245, 245, 245, 0.8) 100%)'
+  useEffect(() => {
+    setIsVisible(true)
+    lastScrollTop.current = 0
+  }, [pathname])
+
+  useEffect(() => {
+    const handleScroll = (event: Event) => {
+      const target = event.target
+      const currentScrollTop =
+        target instanceof Element
+          ? target.scrollTop
+          : Math.max(
+              window.scrollY,
+              document.documentElement.scrollTop,
+              document.body.scrollTop,
+            )
+      const difference = currentScrollTop - lastScrollTop.current
+
+      if (currentScrollTop <= 8) {
+        setIsVisible(true)
+      } else if (Math.abs(difference) >= 8) {
+        if (!open) {
+          setIsVisible(difference < 0)
+        }
+        lastScrollTop.current = currentScrollTop
+      }
+    }
+
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY.current = event.touches[0]?.clientY ?? null
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const currentTouchY = event.touches[0]?.clientY
+      const previousTouchY = lastTouchY.current
+
+      if (currentTouchY === undefined || previousTouchY === null) return
+
+      const difference = previousTouchY - currentTouchY
+      if (Math.abs(difference) >= 12) {
+        if (!open) {
+          setIsVisible(difference < 0)
+        }
+        lastTouchY.current = currentTouchY
+      }
+    }
+
+    const handleTouchEnd = () => {
+      lastTouchY.current = null
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    document.addEventListener('scroll', handleScroll, true)
+    document.addEventListener('touchstart', handleTouchStart, { passive: true })
+    document.addEventListener('touchmove', handleTouchMove, { passive: true })
+    document.addEventListener('touchend', handleTouchEnd, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('scroll', handleScroll, true)
+      document.removeEventListener('touchstart', handleTouchStart)
+      document.removeEventListener('touchmove', handleTouchMove)
+      document.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [open])
 
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl',
-        useDarkHeader ? 'border-white/10' : 'border-[#042F56]/10',
+        'fixed inset-x-0 top-0 z-50 border-b transition-transform duration-300 ease-out',
+        isVisible ? 'translate-y-0' : '-translate-y-full',
+        useDarkHeader
+          ? 'border-white/10 bg-Key'
+          : 'border-[#042F56]/10 bg-White',
       )}
-      style={{ backgroundImage: headerGradient }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link
@@ -107,10 +174,10 @@ export function SiteHeader() {
       {open && (
         <div
           className={cn(
-            'border-t px-5 py-4 backdrop-blur-xl md:hidden',
+            'border-t px-5 py-4 md:hidden',
             useDarkHeader
-              ? 'border-white/10 bg-[#050C16]/95'
-              : 'border-[#042F56]/10 bg-[#F5F5F5]/95',
+              ? 'border-white/10 bg-KeyReal'
+              : 'border-[#042F56]/10 bg-White',
           )}
         >
           <nav className="flex flex-col gap-1">

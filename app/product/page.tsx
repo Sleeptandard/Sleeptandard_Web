@@ -17,6 +17,9 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import { ProductFaqAccordion } from '@/components/product/faq-accordion'
+import { ProductHeroSection } from '@/components/product/product-hero-section'
+import { ProductMorningSection } from '@/components/product/product-morning-section'
+import { ProductWakeTimingSection } from '@/components/product/product-wake-timing-section'
 
 export const metadata: Metadata = {
   title: '알람의 정석 | Sleeptandard',
@@ -59,194 +62,10 @@ const WEARABILITY_FEATURES = [
 
 export default function ProductPage() {
   return (
-    <main className="w-full min-h-screen bg-background text-foreground overflow-x-hidden pt-16 font-sans">
-      {/* ---------------------------------------------------- */}
-      {/* 1. HERO SECTION (Linen Texture + Device + Responsive) */}
-      {/* ---------------------------------------------------- */}
-      <section className="relative w-full bg-[#EAE6E1] overflow-hidden">
-        {/* Soft Ambient Radial Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,_rgba(255,255,255,0.85)_0%,_transparent_75%)] pointer-events-none" />
-
-        <div className="relative mx-auto max-w-6xl px-6 pt-12 md:pt-20 pb-16 md:pb-24">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            {/* Left Content (Text & CTA) */}
-            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left max-w-xl">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0D3559]/10 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-wide text-[#0D3559] mb-4">
-                <Sparkles className="h-3.5 w-3.5 text-[#0D3559]" />
-                실시간 수면 상태 기반 웨어러블 알람
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0D3559] leading-[1.15] mb-5">
-                알람의 정석
-              </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed mb-8 max-w-md">
-                정해진 시간에 무조건 울리는 시끄러운 알람은 그만.
-                <br className="hidden sm:inline" />
-                내 몸의 수면 상태를 분석해 가장 상쾌하게 일어날 수 있는 순간에 깨워드립니다.
-              </p>
-
-              {/* CTA Button */}
-              <div className="w-full sm:w-auto">
-                <Link
-                  href="/apply"
-                  className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#2F526F] hover:bg-[#203c54] active:scale-[0.98] py-4 px-9 text-base font-bold text-white shadow-xl shadow-slate-900/25 transition-all duration-200"
-                >
-                  <span>베타테스트 신청</span>
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Showcase (Device resting on bed) */}
-            <div className="flex-1 w-full max-w-md lg:max-w-lg flex items-center justify-center">
-              <div className="relative w-full aspect-[4/3] drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-                <Image
-                  src="/images/product/hero-device.png"
-                  alt="알람의 정석 웨어러블 디바이스"
-                  fill
-                  priority
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Curved Wave Transition to Problem Section */}
-        <div className="w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 1440 80"
-            className="w-full h-8 sm:h-12 md:h-16 text-[#f5f6f8] fill-current preserve-3d"
-          >
-            <path d="M0,0 C480,80 960,80 1440,0 L1440,80 L0,80 Z" />
-          </svg>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------- */}
-      {/* 2. PROBLEM AWARENESS ("About morning")               */}
-      {/* ---------------------------------------------------- */}
-      <section className="relative w-full bg-[#f5f6f8] pt-12 md:pt-20 pb-0">
-        <div className="mx-auto max-w-6xl px-6 text-center">
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sky-700">
-            About morning
-          </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-snug">
-            이런 아침,
-            <br />
-            익숙하지 않으신가요?
-          </h2>
-
-          {/* 3 Problem Cards (Responsive: 1 col on mobile, 3 cols on desktop) */}
-          <div className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-md sm:max-w-3xl lg:max-w-4xl mx-auto">
-            {/* Card 1 */}
-            <div className="group flex flex-col items-center text-center p-4 rounded-3xl bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="relative w-full max-w-[240px] aspect-square rounded-2xl overflow-hidden shadow-md shadow-slate-300/50 bg-white group-hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/images/product/problem-1.png"
-                  alt="알람이 울렸나요? 다시 잠들어 늦잠"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-4 text-sm sm:text-base font-bold text-slate-800 leading-snug">
-                알람이 울렸나요?
-                <br />
-                <span className="text-slate-900 font-extrabold">다시 잠들어 늦잠</span>
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="group flex flex-col items-center text-center p-4 rounded-3xl bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="relative w-full max-w-[240px] aspect-square rounded-2xl overflow-hidden shadow-md shadow-slate-300/50 bg-white group-hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/images/product/problem-2.png"
-                  alt="'5분만 더...'가 어느새 1시간"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-4 text-sm sm:text-base font-bold text-slate-800 leading-snug">
-                ‘5분만 더...’가
-                <br />
-                <span className="text-slate-900 font-extrabold">어느새 1시간</span>
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group flex flex-col items-center text-center p-4 rounded-3xl bg-white/70 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="relative w-full max-w-[240px] aspect-square rounded-2xl overflow-hidden shadow-md shadow-slate-300/50 bg-white group-hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/images/product/problem-3.png"
-                  alt="충분히 잤는데도 너무 피곤한 아침"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-4 text-sm sm:text-base font-bold text-slate-800 leading-snug">
-                충분히 잤는데도
-                <br />
-                <span className="text-slate-900 font-extrabold">너무 피곤한 아침</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Arch Dark Blue Dome Banner */}
-        <div className="relative mt-12 md:mt-16 w-full">
-          <div className="relative w-full aspect-[1440/500] max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto">
-            <Image
-              src="/images/product/problem-arch.png"
-              alt="문제는 당신의 의지가 아니라 기상 타이밍일 수 있습니다"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------- */}
-      {/* 3. PRINCIPLE SECTION (Hypnogram & Golden Moment)    */}
-      {/* ---------------------------------------------------- */}
-      <section className="relative w-full bg-[#f5f6f8] pt-12 md:pt-20 pb-20 md:pb-28">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-snug">
-            잠에서 개운하게 깰 수 있는
-            <br />
-            ‘순간’은 존재합니다
-          </h2>
-
-          {/* Hypnogram Chart Card */}
-          <div className="relative mt-8 md:mt-12 w-full max-w-3xl mx-auto aspect-[1360/950] rounded-3xl overflow-hidden shadow-lg shadow-slate-300/60 bg-white/90 border border-slate-200/80 p-2 sm:p-4">
-            <Image
-              src="/images/product/hypnogram-chart.png"
-              alt="수면 단계 및 신체 각성도에 따른 깨어나기 좋은 순간"
-              fill
-              className="object-contain"
-            />
-          </div>
-
-          {/* Subtext */}
-          <div className="mt-12 md:mt-16">
-            <p className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-700 leading-relaxed">
-              같은 7시간을 자도
-              <br />
-              <strong className="font-black text-[#0D3559]">언제 깨는가</strong>에 따라
-              <br />
-              아침은 달라질 수 있습니다
-            </p>
-          </div>
-
-          {/* Comparison Cards */}
-          <div className="relative mt-8 md:mt-12 w-full max-w-2xl lg:max-w-3xl mx-auto aspect-[1300/1450]">
-            <Image
-              src="/images/product/comparison-cards.png"
-              alt="깊은 수면 + 낮은 각성도 vs 얕은 수면 + 높은 각성도 비교"
-              fill
-              className="object-contain drop-shadow-xl"
-            />
-          </div>
-        </div>
-      </section>
+    <main className="w-full min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
+      <ProductHeroSection />
+      <ProductMorningSection />
+      <ProductWakeTimingSection />
 
       {/* ---------------------------------------------------- */}
       {/* 4. BRAND & 3D DEVICE SHOWCASE (Deep Navy Theme)     */}

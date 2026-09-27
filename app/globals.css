@@ -28,6 +28,7 @@
   /* Sleeptandard brand colors */
   --color-Key: var(--Key);
   --color-KeyReal: var(--KeyReal);
+  --color-KeyPrint: var(--KeyPrint);
   --color-White: var(--White);
   --color-SkyBlue: var(--SkyBlue);
   --color-Red: var(--Red);
@@ -83,6 +84,7 @@
   /* Sleeptandard brand colors */
   --Key: #050c16;
   --KeyReal: #042f56;
+  --KeyPrint: #163b60;
   --White: #f1f2f3;
   --SkyBlue: #c2e4e9;
   --Red: #ff5967;
