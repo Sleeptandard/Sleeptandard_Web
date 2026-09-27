@@ -10,16 +10,14 @@ import {
   Zap,
   MoreHorizontal,
   Waves,
-  ShieldCheck,
-  Feather,
-  Sparkles,
-  CheckCircle2,
   ArrowRight,
 } from 'lucide-react'
 import { ProductFaqAccordion } from '@/components/product/faq-accordion'
 import { ProductHeroSection } from '@/components/product/product-hero-section'
 import { ProductMorningSection } from '@/components/product/product-morning-section'
+import { ProductDeviceSection } from '@/components/product/product-device-section'
 import { ProductWakeTimingSection } from '@/components/product/product-wake-timing-section'
+import { ProductWearabilitySection } from '@/components/product/product-wearability-section'
 
 export const metadata: Metadata = {
   title: '알람의 정석 | Sleeptandard',
@@ -37,142 +35,14 @@ const BIOMETRIC_SENSORS = [
   { label: '···', icon: MoreHorizontal, desc: '복합 생체 지표' },
 ]
 
-const WEARABILITY_FEATURES = [
-  {
-    icon: Feather,
-    title: '인체공학적 설계',
-    desc: '곡면 밀착 구조로 밤새 뒤척여도 편안하게 착용',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'KC인증 안전 모듈',
-    desc: '전자파 및 발열 테스트를 통과한 안전한 설계',
-  },
-  {
-    icon: Sparkles,
-    title: '동전보다 작은 5g',
-    desc: '초경량 초소형 디바이스로 수면 중 이물감 제로',
-  },
-  {
-    icon: CheckCircle2,
-    title: '의료등급 실리콘',
-    desc: '매일 피부에 부착해도 트러블·자극 없는 안전 소재',
-  },
-]
-
 export default function ProductPage() {
   return (
     <main className="w-full min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
       <ProductHeroSection />
       <ProductMorningSection />
       <ProductWakeTimingSection />
-
-      {/* ---------------------------------------------------- */}
-      {/* 4. BRAND & 3D DEVICE SHOWCASE (Deep Navy Theme)     */}
-      {/* ---------------------------------------------------- */}
-      <section className="relative w-full bg-[#031d37] text-white pt-20 md:pt-28 pb-16 md:pb-24 overflow-hidden">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 lg:gap-16">
-            {/* Left Brand Copy */}
-            <div className="flex flex-col items-start">
-              <div className="relative w-56 sm:w-64 h-14 mb-8">
-                <Image
-                  src="/images/product/brand-logo-dark.png"
-                  alt="알람의 정석"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-6">
-                정해진 시간에 깨우는 알람을 넘어,
-                <br />
-                <span className="text-sky-400">가장 개운한 순간</span>을 찾습니다.
-              </h3>
-
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-lg mb-8">
-                알람의 정석은 시계에 맞춰 억지로 몸을 일으키는 알람이 아닙니다.
-                착용자의 수면 깊이와 신체 각성도를 실시간으로 추적하여,
-                두통과 수면 관성 없이 즉시 활동할 수 있는 생체 골든타임에 부드럽게 깨워주는 웨어러블 솔루션입니다.
-              </p>
-
-              <div className="flex items-center gap-4 text-xs sm:text-sm text-slate-400">
-                <span className="flex items-center gap-1.5 text-sky-300 font-semibold">
-                  <CheckCircle2 className="h-4 w-4" /> 실시간 생체신호 분석
-                </span>
-                <span className="flex items-center gap-1.5 text-sky-300 font-semibold">
-                  <CheckCircle2 className="h-4 w-4" /> 15분 스마트 기상 윈도우
-                </span>
-              </div>
-            </div>
-
-            {/* Right 3D Device Render */}
-            <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-md lg:max-w-lg aspect-[1440/1450] drop-shadow-2xl">
-                <Image
-                  src="/images/product/device-3d.png"
-                  alt="알람의 정석 3D 디바이스 렌더링"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------- */}
-      {/* 5. WEARABILITY & COMFORT (Sleeping Person & Badges)  */}
-      {/* ---------------------------------------------------- */}
-      <section className="relative w-full bg-[#031427] text-white pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden border-t border-slate-800/60">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-400">
-              Comfort & Safety
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white leading-snug">
-              가볍게 착용하고
-              <br />
-              평소처럼 잠들면 됩니다
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-slate-400">
-              잠을 방해하지 않는 초경량 인체공학 곡면 설계로, 착용한 것조차 잊고 편안하게 숙면을 취하세요.
-            </p>
-          </div>
-
-          {/* Sleeping Person Image with Badges */}
-          <div className="relative w-full max-w-3xl mx-auto aspect-[1440/2200] rounded-3xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/product/wearing-sleep.png"
-              alt="인체공학적 설계, KC인증 모듈, 5g 초경량, 의료등급 실리콘 소재 착용 모습"
-              fill
-              className="object-contain"
-            />
-          </div>
-
-          {/* Desktop Feature Grid (Spacious on PC) */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-            {WEARABILITY_FEATURES.map((item, idx) => {
-              const IconComp = item.icon
-              return (
-                <div
-                  key={idx}
-                  className="flex flex-col items-start p-5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md hover:bg-white/[0.08] transition-colors"
-                >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/20 text-sky-400 mb-3">
-                    <IconComp className="h-5 w-5" />
-                  </div>
-                  <h4 className="text-base font-bold text-white mb-1">{item.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+      <ProductDeviceSection />
+      <ProductWearabilitySection />
 
       {/* ---------------------------------------------------- */}
       {/* 6. BIOMETRIC MULTI-SENSOR SENSING GRID               */}
