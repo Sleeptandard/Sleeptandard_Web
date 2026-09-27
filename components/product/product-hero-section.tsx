@@ -49,8 +49,9 @@ export function ProductHeroSection() {
         >
           <NormalButton
             href="/apply"
+            background="linear-gradient(135deg, rgba(4,47,86,0.45) 0%, var(--KeyReal) 90%)"
             borderColor="transparent"
-            className="min-h-[58px] w-full border-0 bg-[linear-gradient(135deg,rgba(4,47,86,0.45)_0%,var(--KeyReal)_90%)] text-[18px] font-semibold text-White"
+            className="min-h-[58px] w-full border-0 text-[18px] font-semibold text-White"
             ariaLabel="알람의 정석 베타테스트 신청"
           >
             베타테스트 신청

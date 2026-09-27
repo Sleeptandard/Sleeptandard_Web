@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Plus, Minus, Search } from 'lucide-react'
+import { useId, useState } from 'react'
+import Image from 'next/image'
 
 interface FAQItem {
   question: string
@@ -32,46 +32,52 @@ const FAQ_LIST: FAQItem[] = [
 ]
 
 export function ProductFaqAccordion() {
+  const id = useId()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx)
+    setOpenIndex((current) => current === idx ? null : idx)
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl md:max-w-3xl space-y-3.5">
+    <div className="w-full space-y-5">
       {FAQ_LIST.map((item, idx) => {
         const isOpen = openIndex === idx
         return (
           <div
             key={idx}
-            className="overflow-hidden rounded-2xl border border-sky-600/30 bg-gradient-to-r from-[#0d426d] to-[#073052] shadow-lg shadow-sky-950/20 transition-all duration-200"
+            className="w-full"
           >
             <button
+              type="button"
+              id={`${id}-question-${idx}`}
               onClick={() => toggle(idx)}
-              className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition hover:brightness-110 active:scale-[0.99]"
+              className="flex min-h-[56px] w-full items-center gap-3 rounded-[20px] bg-[linear-gradient(135deg,#0967BC_0%,#042F56_100%)] px-5 py-4 text-left text-White shadow-[0_4px_10px_rgba(5,12,22,0.15)] transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-KeyReal"
               aria-expanded={isOpen}
+              aria-controls={`${id}-answer-${idx}`}
             >
-              <div className="flex items-center gap-3">
-                <Search className="h-4 w-4 shrink-0 text-sky-300" />
-                <span className="text-sm font-semibold tracking-tight text-white sm:text-base">
+                <span aria-hidden="true" className="shrink-0 text-[15px] font-medium">Q</span>
+                <span className={`min-w-0 flex-1 text-[13px] font-semibold leading-[1.5] ${isOpen ? '' : 'truncate'}`}>
                   {item.question}
                 </span>
-              </div>
-              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-transform">
-                {isOpen ? (
-                  <Minus className="h-4 w-4" />
-                ) : (
-                  <Plus className="h-4 w-4" />
-                )}
-              </div>
+                <Image
+                  src="/images/product/product_plus2.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className={`size-4 shrink-0 transition-transform motion-reduce:transition-none ${isOpen ? 'rotate-45' : ''}`}
+                />
             </button>
 
-            {isOpen && (
-              <div className="border-t border-sky-500/20 bg-[#05213b]/80 px-5 py-4 text-xs leading-relaxed text-slate-200 sm:text-sm">
+              <div
+                id={`${id}-answer-${idx}`}
+                role="region"
+                aria-labelledby={`${id}-question-${idx}`}
+                hidden={!isOpen}
+                className="mt-3 rounded-[20px] border border-KeyReal/10 bg-[#E6EEF4] px-5 py-5 text-[13px] font-normal leading-[1.75] text-Key"
+              >
                 {item.answer}
               </div>
-            )}
           </div>
         )
       })}

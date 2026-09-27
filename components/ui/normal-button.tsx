@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 interface NormalButtonProps {
   href: string
   children: ReactNode
+  background?: CSSProperties['background']
   backgroundColor?: CSSProperties['backgroundColor']
   borderColor?: CSSProperties['borderColor']
   textColor?: CSSProperties['color']
@@ -16,7 +17,8 @@ interface NormalButtonProps {
 export function NormalButton({
   href,
   children,
-  backgroundColor = '#042F56',
+  background,
+  backgroundColor,
   borderColor = '#F5F5F5',
   textColor = '#FFFFFF',
   className,
@@ -31,7 +33,10 @@ export function NormalButton({
         className,
       )}
       style={{
-        backgroundColor,
+        background:
+          background ??
+          backgroundColor ??
+          'linear-gradient(135deg, #0967BC 0%, #042F56 100%)',
         borderColor,
         color: textColor,
       }}

@@ -21,7 +21,7 @@ function GlassCircle({ className }: { className: string }) {
 
 export function ProductWakeTimingSection() {
   return (
-    <section className="relative w-full bg-White px-5 py-20 text-center md:py-28">
+    <section data-split-snap className="relative w-full bg-White px-5 py-20 text-center md:py-28">
       <GlassCircle className="left-[-24px] top-[31%] size-[62px]" />
       <GlassCircle className="left-[12%] top-[43%] size-[18px]" />
       <GlassCircle className="bottom-[5%] right-[-12px] size-[72px]" />
@@ -33,7 +33,7 @@ export function ProductWakeTimingSection() {
           &lsquo;순간&rsquo;은 존재합니다
         </h2>
 
-        <div className="relative mx-auto mt-10 aspect-[626/410] w-full max-w-[626px]">
+        <div className="relative mx-auto mt-10 aspect-[626/410] w-full max-w-[626px] scroll-mt-12 snap-center snap-always">
           <Image
             src="/images/product/product_waketiming1.png"
             alt="수면 단계와 신체 각성도에 따른 깨기 좋은 순간 그래프"
@@ -51,7 +51,7 @@ export function ProductWakeTimingSection() {
           아침은 달라질 수 있습니다
         </p>
 
-        <div className="mx-auto mt-12 grid w-full max-w-[390px] grid-cols-[minmax(0,1fr)_minmax(0,1.16fr)] items-start gap-3 overflow-visible border-0 bg-transparent pb-8 shadow-none sm:max-w-[460px] sm:gap-5">
+        <div className="mx-auto mt-12 grid w-full max-w-[390px] scroll-mt-12 snap-center snap-always grid-cols-[minmax(0,1fr)_minmax(0,1.16fr)] items-start gap-3 overflow-visible border-0 bg-transparent pb-8 shadow-none sm:max-w-[460px] sm:gap-5">
           <div className="space-y-3 pt-6">
             <ProductDiffCard1 className="flex h-[58px] items-center justify-center rounded-[18px] p-0 text-[14px] font-medium text-Key/80">
               깊은 수면

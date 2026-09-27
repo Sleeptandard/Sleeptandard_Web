@@ -6,15 +6,17 @@ function AnalysisBlock({
   image,
   imageAlt,
   aspectClass,
+  snap = true,
 }: {
   title: string
   description: React.ReactNode
   image: string
   imageAlt: string
   aspectClass: string
+  snap?: boolean
 }) {
   return (
-    <div>
+    <div className={snap ? 'scroll-mt-12 snap-center snap-always' : undefined}>
       <h3 className="text-[18px] font-medium leading-normal text-SkyBlue">
         {title}
       </h3>
@@ -38,29 +40,34 @@ function AnalysisBlock({
 
 export function ProductAnalysisSection() {
   return (
-    <section className="relative w-full bg-Key px-5 py-20 text-White md:py-24">
+    <section data-split-snap className="relative w-full bg-Key px-5 py-20 text-White md:py-24">
       <div className="mx-auto w-full max-w-2xl">
-        <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
-          실시간 수면단계와
-          <br />
-          각성도를 추론합니다
-        </h2>
+        <div className="scroll-mt-24 snap-center snap-always">
+          <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
+            실시간 수면단계와
+            <br />
+            각성도를 추론합니다
+          </h2>
 
-        <p className="mt-5 text-[14px] font-normal leading-[1.45] tracking-[-0.02em] text-Gray2">
-          자체 알고리즘이 생체신호의 파형과 변화를
-          <br />
-          실시간으로 분석해 사용자의 수면 상태를 추론합니다.
-        </p>
+          <p className="mt-5 text-[14px] font-normal leading-[1.45] tracking-[-0.02em] text-Gray2">
+            자체 알고리즘이 생체신호의 파형과 변화를
+            <br />
+            실시간으로 분석해 사용자의 수면 상태를 추론합니다.
+          </p>
 
-        <div className="mt-12 space-y-10">
-          <AnalysisBlock
-            title="수면단계 분석"
-            description="수면 사이클과 4class 수면 단계 판별"
-            image="/images/product/product_sleepstage.png"
-            imageAlt="수면 사이클과 4class 수면 단계 그래프"
-            aspectClass="aspect-[3/2]"
-          />
+          <div className="mt-12">
+            <AnalysisBlock
+              title="수면단계 분석"
+              description="수면 사이클과 4class 수면 단계 판별"
+              image="/images/product/product_sleepstage.png"
+              imageAlt="수면 사이클과 4class 수면 단계 그래프"
+              aspectClass="aspect-[3/2]"
+              snap={false}
+            />
+          </div>
+        </div>
 
+        <div className="mt-10">
           <AnalysisBlock
             title="각성도 분석"
             description={
