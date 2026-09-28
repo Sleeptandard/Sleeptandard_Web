@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, MouseEventHandler, ReactNode } from 'react'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
@@ -12,6 +12,7 @@ interface NormalButtonProps {
   textColor?: CSSProperties['color']
   className?: string
   ariaLabel?: string
+  onClick?: MouseEventHandler<HTMLAnchorElement>
 }
 
 export function NormalButton({
@@ -23,11 +24,13 @@ export function NormalButton({
   textColor = '#FFFFFF',
   className,
   ariaLabel,
+  onClick,
 }: NormalButtonProps) {
   return (
     <Link
       href={href}
       aria-label={ariaLabel}
+      onClick={onClick}
       className={cn(
         'inline-flex min-h-12 items-center justify-center rounded-full border px-7 py-3 text-center text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#042F56] focus-visible:ring-offset-2',
         className,

@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react'
 
 import { FormInputField } from '@/components/ui/form-input-field'
+import { FixedSubmitButton } from '@/components/ui/fixed-submit-button'
 import { TermsWithCheckBox2 } from '@/components/ui/terms-with-check-box2'
 
 type ApplyFormProps = {
@@ -138,7 +139,7 @@ export function ApplyForm({ type, onSuccess }: ApplyFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
+    <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5 pb-24">
       <FormInputField
         id={`${type}-name`}
         name="name"
@@ -220,16 +221,15 @@ export function ApplyForm({ type, onSuccess }: ApplyFormProps) {
         </p>
       )}
 
-      <button
+      <FixedSubmitButton
         type="submit"
         disabled={isSubmitting}
-        className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-KeyReal text-sm font-bold text-white shadow-md transition-all hover:bg-[#073f72] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
       >
         {isSubmitting && (
           <span className="size-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
         )}
         {isSubmitting ? '접수 중...' : '제출하기'}
-      </button>
+      </FixedSubmitButton>
     </form>
   )
 }

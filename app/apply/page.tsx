@@ -11,6 +11,8 @@ import {
   Calendar,
 } from 'lucide-react'
 import { ApplyForm } from '@/components/apply-form'
+import { NormalButton } from '@/components/ui/normal-button'
+import { NormalCard } from '@/components/ui/normal-card'
 
 type ApplyView =
   | 'hub'
@@ -23,105 +25,112 @@ export default function ApplyPage() {
   const [view, setView] = useState<ApplyView>('hub')
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5] pt-28 pb-20 sm:pt-36 sm:pb-28 px-5">
+    <main
+      className={
+        view === 'hub'
+          ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-20 pt-32 text-White sm:pb-28 sm:pt-40'
+          : 'min-h-screen bg-[#f5f5f5] px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
+      }
+    >
       <div className="mx-auto max-w-xl">
         {/* ========================================================
             VIEW 1: Apply Hub (APPLY1_m.png)
             ======================================================== */}
         {view === 'hub' && (
           <div>
-            {/* Header */}
-            <div className="text-left">
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#042f56] leading-tight">
+            <div className="text-center">
+              <h1 className="text-[40px] font-bold leading-[1.2] tracking-[-0.035em] text-White">
                 Sleeptandard와
                 <br />
                 함께 하는 방법
               </h1>
             </div>
 
-            {/* Cards Container */}
-            <div className="mt-10 sm:mt-12 space-y-6">
-              {/* Card 1: Newsletter */}
-              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-200/80 transition-all hover:shadow-md">
-                <div className="flex items-center gap-5 sm:gap-6">
-                  {/* Left 3D Asset */}
-                  <div className="w-24 sm:w-28 flex-shrink-0 flex items-center justify-center">
+            <div className="mt-10 space-y-9 sm:mt-12">
+              <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+                <div className="flex items-center gap-5 sm:gap-7">
+                  <div className="flex w-[84px] flex-shrink-0 items-center justify-center sm:w-28">
                     <Image
-                      src="/images/apply/card1_newsletter_icon.png"
+                      src="/images/home/home_mail.png"
                       alt="개발 소식 뉴스레터"
-                      width={340}
-                      height={450}
-                      className="w-full h-auto object-contain"
+                      width={216}
+                      height={216}
+                      className="mx-auto h-auto w-[70%] object-contain"
                     />
                   </div>
-                  {/* Right Text */}
                   <div className="flex-1">
-                    <h2 className="font-display text-lg sm:text-xl font-bold text-[#042f56]">
+                    <h2 className="text-[18px] font-bold leading-[1.3] text-White">
                       개발 소식 뉴스레터
                     </h2>
-                    <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      알람의 정석이 만들어지는 과정과 주요 업데이트 소식을
-                      뉴스레터로 가장 먼저 받아보세요
+                    <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em] text-White">
+                      알람의 정석이 만들어지는 과정과
+                      <br />
+                      주요 업데이트 소식을 뉴스레터로
+                      <br />
+                      가장 먼저 받아보세요
                     </p>
                   </div>
                 </div>
 
-                {/* Button */}
-                <button
-                  type="button"
-                  onClick={() => {
+                <NormalButton
+                  href="#newsletter"
+                  ariaLabel="개발 소식 뉴스레터 신청"
+                  onClick={(event) => {
+                    event.preventDefault()
                     setView('newsletter')
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }}
-                  className="mt-6 w-full h-13 rounded-full bg-[#042f56] text-white font-bold text-sm sm:text-base hover:bg-[#073f72] active:scale-[0.99] transition-all flex items-center justify-center"
+                  className="mt-7 min-h-[50px] w-full text-[16px] font-semibold"
                 >
                   개발소식 받기
-                </button>
-              </div>
+                </NormalButton>
+              </NormalCard>
 
-              {/* Card 2: Beta Test */}
-              <div className="relative rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-200/80 transition-all hover:shadow-md">
-                {/* 2차 모집중 Badge */}
-                <div className="absolute top-6 right-6">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-sky-50 text-sky-800 border border-sky-200 text-xs font-bold tracking-wider">
+              <div className="relative">
+                <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+                  <div className="flex items-center gap-5 sm:gap-7">
+                    <div className="flex w-[84px] flex-shrink-0 items-center justify-center sm:w-28">
+                      <Image
+                        src="/images/home/home_potch2.png"
+                        alt="무료 베타테스트 참여"
+                        width={244}
+                        height={195}
+                        className="h-auto w-[150%] max-w-none object-contain"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-[18px] font-bold leading-[1.3] text-White">
+                        무료 베타테스트 참여
+                      </h2>
+                      <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em] text-White">
+                        알람의 정석을 무료로 직접 사용
+                        <br />
+                        해보고, 더 나은 제품을 만드는
+                        <br />
+                        과정에 함께해주세요
+                      </p>
+                    </div>
+                  </div>
+
+                  <NormalButton
+                    href="#betatest"
+                    ariaLabel="무료 베타테스트 참여 신청"
+                    onClick={(event) => {
+                      event.preventDefault()
+                      setView('betatest')
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }}
+                    className="mt-7 min-h-[50px] w-full text-[16px] font-semibold"
+                  >
+                    참여 신청하기
+                  </NormalButton>
+                </NormalCard>
+
+                <div className="absolute -right-1 -top-4">
+                  <span className="inline-flex min-h-9 items-center justify-center rounded-full bg-[linear-gradient(135deg,#088AFF_0%,#005CAF_100%)] px-5 text-[14px] font-medium text-White shadow-[0_8px_18px_rgba(0,92,175,0.3)]">
                     2차 모집중
                   </span>
                 </div>
-
-                <div className="flex items-center gap-5 sm:gap-6 pt-2">
-                  {/* Left 3D Asset */}
-                  <div className="w-24 sm:w-28 flex-shrink-0 flex items-center justify-center">
-                    <Image
-                      src="/images/apply/card2_betatest_icon.png"
-                      alt="무료 베타테스트 참여"
-                      width={340}
-                      height={450}
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                  {/* Right Text */}
-                  <div className="flex-1 pr-16 sm:pr-20">
-                    <h2 className="font-display text-lg sm:text-xl font-bold text-[#042f56]">
-                      무료 베타테스트 참여
-                    </h2>
-                    <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      알람의 정석을 무료로 직접 사용해보고, 더 나은 제품을 만드는
-                      과정에 함께해주세요
-                    </p>
-                  </div>
-                </div>
-
-                {/* Button */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setView('betatest')
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }}
-                  className="mt-6 w-full h-13 rounded-full bg-[#042f56] text-white font-bold text-sm sm:text-base hover:bg-[#073f72] active:scale-[0.99] transition-all flex items-center justify-center"
-                >
-                  참여 신청하기
-                </button>
               </div>
             </div>
           </div>

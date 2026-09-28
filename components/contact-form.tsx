@@ -2,8 +2,10 @@
 
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
 
 import { FormInputField } from '@/components/ui/form-input-field'
+import { FixedSubmitButton } from '@/components/ui/fixed-submit-button'
 import { FormTextareaField } from '@/components/ui/form-textarea-field'
 import { TermsWithCheckBox1 } from '@/components/ui/terms-with-check-box1'
 
@@ -148,7 +150,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="mt-10 sm:mt-12">
+    <form onSubmit={handleSubmit} noValidate className="mt-10 pb-24 sm:mt-12">
       <div className="space-y-4">
         <FormInputField
           id="contact-name"
@@ -219,11 +221,18 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="mt-6 rounded-3xl bg-KeyReal p-6 text-center text-white shadow-lg sm:p-8">
-        <h3 className="font-display text-lg font-bold tracking-tight sm:text-xl">
+      <div className="relative mt-8 rounded-[20px] bg-KeyReal px-6 pb-7 pt-9 text-center text-White sm:px-8 sm:pb-8 sm:pt-10">
+        <Image
+          src="/images/contact/contact_kakaotalk.png"
+          alt="카카오톡 TALK"
+          width={176}
+          height={181}
+          className="absolute -right-3 -top-6 h-auto w-[64px] sm:-right-4 sm:w-[72px]"
+        />
+        <h3 className="text-[24px] font-semibold leading-[1.3] tracking-[-0.035em] text-White">
           빠른 문의가 필요하신가요?
         </h3>
-        <div className="mt-2 text-xs leading-relaxed text-white/80 sm:text-sm">
+        <div className="mt-5 text-[14px] font-medium leading-[1.3] tracking-[-0.025em] text-White">
           <p>간단한 질문이나 빠른 답변이 필요하다면</p>
           <p>카카오톡 채널에서 바로 이야기할 수 있습니다.</p>
         </div>
@@ -231,29 +240,21 @@ export function ContactForm() {
           href="http://pf.kakao.com/_xoQGwX/chat"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#FEE500] px-6 py-3 text-xs font-bold text-[#191919] shadow-sm transition-transform hover:scale-[1.02] sm:text-sm"
+          className="mt-6 inline-flex min-h-[46px] w-full items-center justify-center rounded-[20px] bg-[#FFEB3B] px-6 py-3 text-[16px] font-medium text-Key transition-[filter,transform] hover:brightness-105 active:scale-[0.99]"
         >
-          <svg
-            className="size-4 fill-current"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 3C6.477 3 2 6.477 2 10.767c0 2.72 1.79 5.11 4.508 6.47-.198.742-.718 2.684-.822 3.097-.13.513.188.506.395.369.163-.109 2.584-1.758 3.633-2.474.743.104 1.508.16 2.286.16 5.523 0 10-3.477 10-7.767C22 6.477 17.523 3 12 3z" />
-          </svg>
           카카오톡으로 문의하기
         </a>
       </div>
 
-      <button
+      <FixedSubmitButton
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-full bg-KeyReal text-sm font-bold text-white shadow-md transition-all hover:bg-[#073f72] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
       >
         {isSubmitting && (
           <span className="size-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
         )}
         {isSubmitting ? '접수 중...' : '제출하기'}
-      </button>
+      </FixedSubmitButton>
     </form>
   )
 }

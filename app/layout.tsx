@@ -1,9 +1,17 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_KR, Space_Grotesk } from 'next/font/google'
+import localFont from 'next/font/local'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
+
+const pretendard = localFont({
+  src: './fonts/PretendardVariable.woff2',
+  display: 'swap',
+  variable: '--font-pretendard',
+  weight: '45 920',
+})
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ['latin'],
@@ -39,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`dark bg-background ${notoSansKr.variable} ${spaceGrotesk.variable}`}
+      className={`dark bg-background ${pretendard.variable} ${notoSansKr.variable} ${spaceGrotesk.variable}`}
     >
       <body className="antialiased font-sans">
         <SiteHeader />
