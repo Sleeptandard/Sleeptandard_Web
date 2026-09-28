@@ -14,7 +14,7 @@ export function ApplySection() {
 
         <div className="mt-8 space-y-7">
           <NormalCard className="flex min-h-[214px] snap-center snap-always flex-col p-5 sm:p-6">
-            <div className="flex flex-1 items-center gap-4">
+            <div className="flex flex-1 items-center gap-5">
               <Image
                 src="/images/home/home_mail.png"
                 alt="뉴스레터 메일"
@@ -46,13 +46,13 @@ export function ApplySection() {
           </NormalCard>
 
           <NormalCard className="flex min-h-[214px] snap-center snap-always flex-col p-5 sm:p-6">
-            <div className="flex flex-1 items-center gap-4">
+            <div className="flex flex-1 items-center gap-1">
               <Image
-                src="/images/home/home_potch2.png"
+                src="/images/home/home_potch3.png"
                 alt="알람의 정석 웨어러블 기기"
-                width={191}
-                height={211}
-                className="h-auto w-16 shrink-0 sm:w-20"
+                width={200}
+                height={200}
+                className="h-auto w-20 shrink-0 sm:w-20"
               />
               <div className="min-w-0 text-left text-White">
                 <h3 className="text-[18px] font-bold leading-normal">

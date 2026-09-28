@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
@@ -19,10 +20,6 @@ export function SiteHeader() {
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollTop = useRef(0)
   const lastTouchY = useRef<number | null>(null)
-  const useDarkHeader =
-    pathname === '/' ||
-    pathname.startsWith('/team') ||
-    pathname.startsWith('/apply')
 
   useEffect(() => {
     setIsVisible(true)
@@ -93,12 +90,10 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b transition-transform duration-300 ease-out',
+        'fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-Key transition-transform duration-300 ease-out',
         isVisible ? 'translate-y-0' : '-translate-y-full',
-        useDarkHeader
-          ? 'border-white/10 bg-Key'
-          : 'border-[#042F56]/10 bg-White',
       )}
+      style={{ colorScheme: 'only light' }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link
@@ -107,22 +102,15 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           aria-label="Sleeptandard 홈"
         >
-          <span
+          <Image
+            src="/images/logo/logo_with_background.png"
+            alt=""
+            width={256}
+            height={70}
+            priority
+            draggable={false}
             aria-hidden="true"
-            className={cn(
-              'block h-[37px] w-32 transition-colors',
-              useDarkHeader ? 'bg-white' : 'bg-[#042F56]',
-            )}
-            style={{
-              WebkitMaskImage: 'url(/images/logo/logo.svg)',
-              maskImage: 'url(/images/logo/logo.svg)',
-              WebkitMaskPosition: 'center',
-              maskPosition: 'center',
-              WebkitMaskRepeat: 'no-repeat',
-              maskRepeat: 'no-repeat',
-              WebkitMaskSize: 'contain',
-              maskSize: 'contain',
-            }}
+            className="block h-auto w-32 object-contain"
           />
         </Link>
 
@@ -138,13 +126,9 @@ export function SiteHeader() {
                 href={link.href}
                 className={cn(
                   'rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                  useDarkHeader
-                    ? active
-                      ? 'bg-white/10 text-white'
-                      : 'text-white/70 hover:text-white'
-                    : active
-                      ? 'bg-[#042F56]/10 text-[#042F56]'
-                      : 'text-[#042F56]/70 hover:text-[#042F56]',
+                  active
+                    ? 'bg-white/10 text-white'
+                    : 'text-white/70 hover:text-white',
                 )}
               >
                 {link.label}
@@ -159,10 +143,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className={cn(
-            'flex h-10 w-10 items-center justify-center rounded-full md:hidden',
-            useDarkHeader ? 'text-white' : 'text-[#042F56]',
-          )}
+          className="flex h-10 w-10 items-center justify-center rounded-full text-white md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={open}
@@ -173,12 +154,7 @@ export function SiteHeader() {
 
       {open && (
         <div
-          className={cn(
-            'border-t px-5 py-4 md:hidden',
-            useDarkHeader
-              ? 'border-white/10 bg-KeyReal'
-              : 'border-[#042F56]/10 bg-White',
-          )}
+          className="border-t border-white/10 bg-KeyReal px-5 py-4 md:hidden"
         >
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
@@ -193,13 +169,9 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     'rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                    useDarkHeader
-                      ? active
-                        ? 'bg-white/10 text-white'
-                        : 'text-white/70 hover:bg-white/5 hover:text-white'
-                      : active
-                        ? 'bg-[#042F56]/10 text-[#042F56]'
-                        : 'text-[#042F56]/70 hover:bg-[#042F56]/5 hover:text-[#042F56]',
+                    active
+                      ? 'bg-white/10 text-white'
+                      : 'text-white/70 hover:bg-white/5 hover:text-white',
                   )}
                 >
                   {link.label}

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
+  colorScheme: 'only light',
   themeColor: '#0a0e1a',
 }
 
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`dark bg-background ${pretendard.variable} ${notoSansKr.variable} ${spaceGrotesk.variable}`}
+      className={`bg-background ${pretendard.variable} ${notoSansKr.variable} ${spaceGrotesk.variable}`}
     >
       <body className="antialiased font-sans">
         <SiteHeader />
