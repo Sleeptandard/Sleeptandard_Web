@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Moon, Mail, Camera } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export function SiteFooter() {
   return (
@@ -8,17 +8,10 @@ export function SiteFooter() {
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="max-w-sm">
             <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 ring-1 ring-primary/30">
-                <Moon className="h-4 w-4 text-primary" aria-hidden="true" />
-              </span>
               <span className="font-display text-lg font-semibold tracking-tight">
                 Sleeptandard
               </span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              수면 상태 기반 웨어러블 알람 패치 &lsquo;Sleeptandard&rsquo;로
-              누구나 매일 개운한 아침을 시작할 수 있도록 만듭니다.
-            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
@@ -47,13 +40,20 @@ export function SiteFooter() {
                   <Mail className="h-4 w-4" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/sleeptandard?stkn=a25kaHE2enMxdGRw"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:text-foreground"
                   aria-label="인스타그램"
                 >
-                  <Camera className="h-4 w-4" />
+                  <span
+                    aria-hidden="true"
+                    className="h-5 w-5 bg-current"
+                    style={{
+                      WebkitMask: 'url(/ui/ui_instagram.svg) center / contain no-repeat',
+                      mask: 'url(/ui/ui_instagram.svg) center / contain no-repeat',
+                    }}
+                  />
                 </a>
               </div>
             </div>
