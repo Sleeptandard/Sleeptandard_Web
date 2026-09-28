@@ -82,7 +82,29 @@ export async function POST(request: Request) {
       </div>
     `
 
-    // 2. Send via Resend API if API Key is configured
+    // 2. Google Sheets Webhook 연동 (Contact 탭에 저장)
+    const googleScriptUrl =
+      process.env.GOOGLE_SHEET_APPLY_WEBHOOK ||
+      'https://script.google.com/macros/s/AKfycbzXX1_tEMhEHVpTrXWqekdK6S2XJ9eohfpOxwC6QdQ6TWzHL4Xg66Fr8cilmgiTBeA/exec'
+
+    try {
+      await fetch(googleScriptUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        redirect: 'follow',
+        body: JSON.stringify({
+          type: '문의',
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone ? phone.trim() : '',
+          message: message.trim(),
+        }),
+      })
+    } catch (sheetErr) {
+      console.error('Google Sheet Webhook Error for Contact:', sheetErr)
+    }
+
+    // 3. Send via Resend API if API Key is configured
     if (resendApiKey) {
       const resendResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -102,28 +124,10 @@ export async function POST(request: Request) {
       if (!resendResponse.ok) {
         const errData = await resendResponse.json()
         console.error('Resend API Error:', errData)
-        return NextResponse.json(
-          { error: '이메일 발송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' },
-          { status: 500 }
-        )
       }
-
-      return NextResponse.json({ success: true })
     }
 
-    // 3. Fallback when RESEND_API_KEY is not yet configured (e.g. Local Dev)
-    console.log('=== [CONTACT INQUIRY RECEIVED] ===')
-    console.log('Target:', targetEmail)
-    console.log('From:', `${name} <${email}> (${phone || 'No phone'})`)
-    console.log('Message:', message)
-    console.log('Timestamp:', timestamp)
-    console.log('NOTE: RESEND_API_KEY not found in environment variables. Email logged to console.')
-    console.log('==================================')
-
-    return NextResponse.json({
-      success: true,
-      note: 'Inquiry logged. (Add RESEND_API_KEY to Vercel to receive real emails)',
-    })
+    return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Contact API Error:', error)
     return NextResponse.json(
