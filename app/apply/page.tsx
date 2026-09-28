@@ -2,10 +2,6 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import {
-  ChevronRight,
-} from 'lucide-react'
 import { ApplyForm } from '@/components/apply-form'
 import { NormalButton } from '@/components/ui/normal-button'
 import { NormalCard } from '@/components/ui/normal-card'
@@ -23,8 +19,10 @@ export default function ApplyPage() {
   return (
     <main
       className={
-        view === 'hub' || view === 'newsletter_done'
+        view === 'hub'
           ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-20 pt-32 text-White sm:pb-28 sm:pt-40'
+          : view === 'newsletter_done' || view === 'betatest_done'
+            ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-8 pt-20 text-White sm:pb-12 sm:pt-24'
           : view === 'newsletter' || view === 'betatest'
             ? 'min-h-screen bg-White px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
           : 'min-h-screen bg-[#f5f5f5] px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
@@ -155,7 +153,7 @@ export default function ApplyPage() {
                 aria-hidden="true"
                 width={218}
                 height={215}
-                className="pointer-events-none absolute -bottom-10 -right-9 h-auto w-[112px] select-none opacity-75"
+                className="pointer-events-none absolute -bottom-10 -right-9 h-auto w-[112px] select-none opacity-50"
               />
 
               <div className="relative z-10">
@@ -196,14 +194,14 @@ export default function ApplyPage() {
             VIEW 3: Newsletter Success (APPLY_Newsletter2_M.png)
             ======================================================== */}
         {view === 'newsletter_done' && (
-          <div className="flex min-h-[calc(100svh-13rem)] flex-col items-center text-center sm:min-h-[calc(100svh-17rem)]">
+          <div className="flex min-h-[calc(100svh-7rem)] flex-col items-center text-center sm:min-h-[calc(100svh-9rem)]">
             <Image
               src="/images/home/home_mail.png"
               alt="개발 소식 뉴스레터 신청 완료"
               width={216}
               height={216}
               priority
-              className="mt-[10svh] h-auto w-[132px] sm:mt-[6svh] sm:w-[152px]"
+              className="mt-[4svh] h-auto w-[132px] sm:mt-[2svh] sm:w-[152px]"
             />
 
             <h1 className="mt-8 text-[28px] font-bold leading-[1.3] tracking-[-0.035em] text-White">
@@ -300,49 +298,43 @@ export default function ApplyPage() {
             VIEW 5: Beta Test Success (APPLY_Betatest2_M.png)
             ======================================================== */}
         {view === 'betatest_done' && (
-          <div className="text-center py-8">
-            {/* Success Illustration */}
-            <div className="flex justify-center mb-6">
-              <div className="w-48 sm:w-56">
-                <Image
-                  src="/images/apply/betatest_success_icon.png"
-                  alt="접수 완료"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
+          <div className="flex min-h-[calc(100svh-7rem)] flex-col items-center text-center sm:min-h-[calc(100svh-9rem)]">
+            <Image
+              src="/images/product/product_potch_big.png"
+              alt="알람의 정석 베타테스트 제품"
+              width={1140}
+              height={800}
+              priority
+              className="h-auto w-[190px] object-contain sm:w-[220px] mt-3"
+            />
 
-            <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#042f56]">
+            <h1 className="mt-5 text-[28px] font-bold leading-[1.25] tracking-[-0.035em] text-White">
               신청이 정상적으로
               <br />
-              접수되었습니다
+              접수되었습니다 💌
             </h1>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+
+            <p className="mt-6 text-[14px] font-medium leading-[1.3] tracking-[-0.025em] text-White">
               알람의 정석 베타테스트에 관심을 가져주셔서 감사합니다
             </p>
 
-            <div className="mt-6 rounded-2xl bg-white/70 border border-slate-200/80 p-5 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-2 max-w-md mx-auto">
-              <p>
-                베타테스트 일정과 참여 방법이 확정되면
-                <br />
-                신청해주신 전화번호를 통해 안내드리겠습니다
-              </p>
-              <p className="text-[11px] sm:text-xs text-slate-500 pt-1 border-t border-slate-200/60">
-                ※ 베타테스터 선정 여부 및 세부 일정은 추후 개별 안내됩니다
-              </p>
-            </div>
+            <p className="mt-6 text-[14px] font-medium leading-[1.3] tracking-[-0.025em] text-Gray2">
+              베타테스트 일정과 참여 방법이 확정되면
+              <br />
+              신청해주신 전화번호를 통해 안내드리겠습니다
+            </p>
 
-            <div className="mt-10 flex justify-center">
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#042f56] px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-md hover:bg-[#073f72] active:scale-[0.99] transition-all"
-              >
-                <span>홈으로 이동하기</span>
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <p className="mt-6 text-[12px] font-medium leading-[1.3] tracking-[-0.02em] text-Gray2">
+              ※ 베타테스터 선정 여부 및 세부 일정은 추후 개별 안내됩니다
+            </p>
+
+            <NormalButton
+              href="/"
+              ariaLabel="홈으로 이동하기"
+              className="mt-auto min-h-[52px] w-full text-[16px] font-semibold"
+            >
+              홈으로 이동하기 →
+            </NormalButton>
           </div>
         )}
       </div>
