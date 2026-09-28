@@ -4,11 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  ArrowLeft,
   ChevronRight,
-  Sparkles,
-  Users,
-  Calendar,
 } from 'lucide-react'
 import { ApplyForm } from '@/components/apply-form'
 import { NormalButton } from '@/components/ui/normal-button'
@@ -27,8 +23,10 @@ export default function ApplyPage() {
   return (
     <main
       className={
-        view === 'hub'
+        view === 'hub' || view === 'newsletter_done'
           ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-20 pt-32 text-White sm:pb-28 sm:pt-40'
+          : view === 'newsletter' || view === 'betatest'
+            ? 'min-h-screen bg-White px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
           : 'min-h-screen bg-[#f5f5f5] px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
       }
     >
@@ -141,53 +139,46 @@ export default function ApplyPage() {
             ======================================================== */}
         {view === 'newsletter' && (
           <div>
-            {/* Back Button */}
-            <button
-              type="button"
-              onClick={() => setView('hub')}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-500 hover:text-[#042f56] transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>함께 하는 방법으로 돌아가기</span>
-            </button>
-
-            {/* Header */}
             <div>
-              <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#042f56]">
+              <h1 className="text-[32px] font-bold leading-[1.2] tracking-[-0.035em] text-KeyReal">
                 개발 소식 뉴스레터
               </h1>
-              <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p className="mt-4 text-[16px] font-semibold leading-[1.3] tracking-[-0.03em] text-Key">
                 알람의 정석이 개발되는 과정을 가장 먼저 만나보세요
               </p>
             </div>
 
-            {/* Info Box: 이런 소식을 받아볼 수 있어요 */}
-            <div className="mt-8 rounded-3xl bg-[#011c35] text-white p-6 sm:p-8 shadow-md">
-              <h3 className="font-display text-sm sm:text-base font-bold text-sky-300">
+            <div className="relative mt-8 overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,#001C35_0%,#001C35_50%,#06254C_100%)] p-6 text-White sm:p-8">
+              <Image
+                src="/images/home/home_glassicon3.png"
+                alt=""
+                aria-hidden="true"
+                width={218}
+                height={215}
+                className="pointer-events-none absolute -bottom-10 -right-9 h-auto w-[112px] select-none opacity-75"
+              />
+
+              <div className="relative z-10">
+              <h3 className="text-[14px] font-medium leading-[1.3] text-SkyBlue">
                 이런 소식을 받아볼 수 있어요
               </h3>
-              <ul className="mt-5 space-y-3.5 text-xs sm:text-sm text-white/90">
+              <ul className="mt-5 space-y-3.5 text-[14px] font-medium leading-[1.3] text-White">
                 <li className="flex items-center gap-3">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300 font-bold">
-                    <Sparkles className="h-4 w-4" />
-                  </span>
+                  <Image src="/images/apply/apply_notify.svg" alt="" width={24} height={24} className="size-5 flex-none" />
                   <span>새로운 기능과 제품 개발 소식</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300 font-bold">
-                    <Users className="h-4 w-4" />
-                  </span>
+                  <Image src="/images/apply/apply_beta.svg" alt="" width={24} height={24} className="size-5 flex-none" />
                   <span>베타테스터 모집 및 참여 기회</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300 font-bold">
-                    <Calendar className="h-4 w-4" />
-                  </span>
+                  <Image src="/images/apply/apply_date.svg" alt="" width={24} height={24} className="size-5 flex-none" />
                   <span>출시·펀딩 등 주요 일정</span>
                 </li>
               </ul>
-              <div className="mt-5 pt-4 border-t border-white/10 text-[11px] sm:text-xs text-white/60">
+              <p className="mt-6 pr-14 text-[12px] font-medium leading-[1.3] text-Gray2">
                 새로운 소식이 있을 때 비정기적으로 발송됩니다
+              </p>
               </div>
             </div>
 
@@ -205,38 +196,32 @@ export default function ApplyPage() {
             VIEW 3: Newsletter Success (APPLY_Newsletter2_M.png)
             ======================================================== */}
         {view === 'newsletter_done' && (
-          <div className="text-center py-8">
-            {/* Success Illustration */}
-            <div className="flex justify-center mb-6">
-              <div className="w-48 sm:w-56">
-                <Image
-                  src="/images/apply/newsletter_success_icon.png"
-                  alt="신청 완료"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
+          <div className="flex min-h-[calc(100svh-13rem)] flex-col items-center text-center sm:min-h-[calc(100svh-17rem)]">
+            <Image
+              src="/images/home/home_mail.png"
+              alt="개발 소식 뉴스레터 신청 완료"
+              width={216}
+              height={216}
+              priority
+              className="mt-[10svh] h-auto w-[132px] sm:mt-[6svh] sm:w-[152px]"
+            />
 
-            <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#042f56]">
+            <h1 className="mt-8 text-[28px] font-bold leading-[1.3] tracking-[-0.035em] text-White">
               신청이 완료되었습니다
             </h1>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="mt-6 text-[16px] font-medium leading-[1.3] tracking-[-0.025em] text-White">
               이제 알람의 정석의 새로운 소식을
               <br />
-              가장 먼저 받아볼 수 있어요
+              가장 먼저 받아볼 수 있어요 🎉
             </p>
 
-            <div className="mt-10 flex justify-center">
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#042f56] px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-md hover:bg-[#073f72] active:scale-[0.99] transition-all"
-              >
-                <span>홈으로 이동하기</span>
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <NormalButton
+              href="/"
+              ariaLabel="홈으로 이동하기"
+              className="mt-auto min-h-[52px] w-full text-[16px] font-semibold"
+            >
+              홈으로 이동하기 →
+            </NormalButton>
           </div>
         )}
 
@@ -245,78 +230,60 @@ export default function ApplyPage() {
             ======================================================== */}
         {view === 'betatest' && (
           <div>
-            {/* Back Button */}
-            <button
-              type="button"
-              onClick={() => setView('hub')}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-500 hover:text-[#042f56] transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>함께 하는 방법으로 돌아가기</span>
-            </button>
-
-            {/* Header */}
             <div>
-              <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#042f56]">
+              <h1 className="text-[32px] font-bold leading-[1.2] tracking-[-0.035em] text-KeyReal">
                 베타테스트 참여 신청
               </h1>
-              <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p className="mt-4 text-[16px] font-semibold leading-[1.3] tracking-[-0.03em] text-Key">
                 알람의 정석을 비용 없이 가장 먼저 만날 기회
               </p>
             </div>
 
-            {/* Card 1: 이런 분을 찾고 있어요 */}
-            <div className="mt-8 rounded-3xl bg-[#011c35] text-white p-6 sm:p-7 flex gap-4 sm:gap-5 items-start shadow-md">
-              <div className="w-14 sm:w-16 flex-shrink-0 pt-1">
-                <Image
-                  src="/images/apply/betatest_icon_target.png"
-                  alt=""
-                  width={280}
-                  height={320}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-display text-sm sm:text-base font-bold text-sky-300">
-                  이런 분을 찾고 있어요
-                </h3>
-                <ul className="mt-3 space-y-2 text-xs sm:text-sm text-white/90 leading-relaxed">
-                  <li>• 아침잠 때문에 하루의 시작이 자주 힘들었던 분</li>
-                  <li>• 알람을 여러 번 끄거나 스누즈를 반복해본 분</li>
-                  <li>• 새로운 기상 방법을 직접 경험해보고 싶은 분</li>
-                </ul>
-              </div>
-            </div>
+            <div className="relative mt-8 overflow-hidden rounded-[28px] bg-[#001C35] px-5 pb-6 pt-7 text-White sm:px-7 sm:pb-7 sm:pt-8">
+              <Image
+                src="/images/home/home_glassicon3.png"
+                alt=""
+                aria-hidden="true"
+                width={102}
+                height={103}
+                className="pointer-events-none absolute -right-9 -top-10 h-auto w-[108px] -scale-x-100 select-none "
+              />
 
-            {/* Card 2: 베타테스터가 되면 */}
-            <div className="mt-4 rounded-3xl bg-[#011c35] text-white p-6 sm:p-7 flex gap-4 sm:gap-5 items-start shadow-md">
-              <div className="w-14 sm:w-16 flex-shrink-0 pt-1">
-                <Image
-                  src="/images/apply/betatest_icon_benefit.png"
-                  alt=""
-                  width={280}
-                  height={350}
-                  className="w-full h-auto object-contain"
-                />
+              <div className="relative z-10 flex items-center gap-4">
+                <span className="flex size-[44px] flex-none items-center justify-center rounded-full bg-[#124B7F]">
+                  <Image src="/images/apply/apply_tester.svg" alt="" width={24} height={24} className="size-8" />
+                </span>
+                <div className="min-w-0 text-left">
+                  <h3 className="text-[14px] font-semibold leading-[1.3]">이런 분을 찾고 있어요</h3>
+                  <ul className="mt-2 text-[12px] font-medium leading-[1.25] tracking-[-0.02em]">
+                    <li>- 아침잠 때문에 하루의 시작이 자주 힘들었던 분</li>
+                    <li>- 알람을 여러 번 끄거나 스누즈를 반복해본 분</li>
+                    <li>- 새로운 기상 방법을 직접 경험해보고 싶은 분</li>
+                  </ul>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="font-display text-sm sm:text-base font-bold text-sky-300">
-                  베타테스터가 되면
-                </h3>
-                <ul className="mt-3 space-y-2 text-xs sm:text-sm text-white/90 leading-relaxed">
-                  <li>• 알람의 정석을 무료로 먼저 경험할 수 있어요</li>
-                  <li>
-                    • 사용하면서 느낀 의견을 전하고, 제품 개선 과정에 함께할 수
-                    있어요
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            {/* Notice Box */}
-            <div className="mt-6 rounded-2xl bg-slate-200/70 p-4 text-xs sm:text-sm text-slate-700 leading-relaxed text-center">
-              테스트 일정이 확정되면 선정된 분에게 전화번호로 일정 및
-              참여방법을 개별 안내드립니다
+              <div aria-hidden="true" className="my-6 h-px w-full bg-[linear-gradient(90deg,transparent_0%,var(--SkyBlue)_50%,transparent_100%)]" />
+
+              <div className="relative z-10 flex items-center gap-4">
+                <span className="flex size-[44px] flex-none items-center justify-center rounded-full bg-[#124B7F]">
+                  <Image src="/images/apply/apply_gift.svg" alt="" width={24} height={24} className="size-8" />
+                </span>
+                <div className="min-w-0 text-left">
+                  <h3 className="text-[14px] font-semibold leading-[1.3]">베타테스터가 되면</h3>
+                  <ul className="mt-2 text-[12px] font-medium leading-[1.25] tracking-[-0.02em]">
+                    <li>- 알람의 정석을 무료로 먼저 경험할 수 있어요</li>
+                    <li>- 사용하면서 느낀 의견을 전하고,</li>
+                    <li className="pl-[7px]">제품 개선 과정에 함께할 수 있어요</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p className="relative z-10 mt-7 text-center text-[12px] font-medium leading-[1.3] text-Gray">
+                테스트 일정이 확정되면 선정된 분에게 전화번호로
+                <br />
+                일정 및 참여방법을 개별 안내드립니다
+              </p>
             </div>
 
             <ApplyForm
