@@ -39,7 +39,7 @@ export function NormalButton({
         background:
           background ??
           backgroundColor ??
-          'linear-gradient(135deg, #0967BC 0%, #042F56 100%)',
+          'linear-gradient(135deg, #0967BC 0%, #064279 66%, #042F56 100%)',
         borderColor,
         color: textColor,
       }}

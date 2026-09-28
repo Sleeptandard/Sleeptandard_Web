@@ -12,14 +12,14 @@ export function TeamPhotoSection() {
             alt="Sleeptandard 팀원 다섯 명"
             width={1080}
             height={1137}
-            className="absolute left-1/2 top-4 h-auto w-[108%] max-w-none -translate-x-1/2"
+            className="absolute left-1/2 top-4 h-auto w-[100%] max-w-none -translate-x-1/2"
           />
         </div>
 
         <div className="mt-[clamp(96px,14svh,140px)] px-5">
           <NormalButton
             href="/team"
-            className="min-h-[62px] w-full text-[16px] font-semibold"
+            className="min-h-[62px] w-full text-[16px] font-semibold mt-5"
             ariaLabel="Sleeptandard 팀 더 알아보기"
           >
             팀 더 알아보기

@@ -11,7 +11,7 @@ export function ProductSection() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[max(42svh,320px)] w-full max-w-2xl flex-col justify-center">
-        <h2 className="text-center font-display text-[24px] font-normal leading-[1.35] tracking-[-0.025em] text-Key">
+        <h2 className="text-center font-display text-[26px] font-medium leading-[1.35] tracking-[-0.025em] text-Key">
           우리가 가장 먼저 바꾸고 싶은 건,
           <br />
           <strong className="font-bold">아침</strong>입니다
@@ -28,7 +28,7 @@ export function ProductSection() {
             />
           </div>
 
-          <div className="flex min-w-0 flex-col items-center justify-center px-4 py-5 text-center sm:px-7">
+          <div className="flex min-w-0 flex-col items-center justify-center px-4 py-5 sm:px-7">
             <Image
               src="/images/home/home_logo.png"
               alt="알람의 정석"
@@ -36,7 +36,7 @@ export function ProductSection() {
               height={66}
               className="h-auto w-full max-w-[165px]"
             />
-            <p className="mt-5 text-[13px] leading-[1.45] text-Key">
+            <p className="mt-5 text-[14px] text-semibold text-left leading-[1.45] text-Key">
               최적의 기상 타이밍으로,
               <br />
               가장 개운한 아침을 만나보세요

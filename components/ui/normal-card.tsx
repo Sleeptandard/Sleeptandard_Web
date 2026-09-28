@@ -3,12 +3,12 @@ import type { ComponentPropsWithoutRef } from 'react'
 import { cn } from '@/lib/utils'
 
 const NORMAL_CARD_BACKGROUND =
-  'linear-gradient(135deg, #001C35 0%, #001C35 50%, #06254B 100%)'
+  'linear-gradient(135deg, #001C35 0%, #001C35 40%, #06254B 100%)'
 
 const NORMAL_CARD_SHADOW = [
-  '8px 8px 15px 0 rgba(2, 7, 16, 0.2)',
-  '-2px -2px 22px 0 rgba(185, 200, 223, 0.08)',
-  'inset 5px 6px 25px -12px rgba(3, 14, 30, 0.8)',
+  '10px 10px 17px 0 rgba(2, 7, 16, 0.2)',
+  '-3px -3px 24px 0 rgba(185, 200, 223, 0.08)',
+  'inset 6px 7px 27px -12px rgba(3, 14, 30, 0.8)',
 ].join(', ')
 
 type NormalCardProps = ComponentPropsWithoutRef<'div'>
