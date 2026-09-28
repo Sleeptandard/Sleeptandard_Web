@@ -20,10 +20,8 @@ export function TeamBeliefSection() {
   return (
     <section
       aria-labelledby="team-belief-title"
-      className="relative z-10 scroll-mt-[36svh] bg-KeyReal px-5 pb-[68px] pt-4 text-center text-White md:py-20"
+      className="relative z-10 bg-KeyReal px-5 pb-[68px] pt-4 text-center text-White md:py-20"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px scroll-mt-[36svh] snap-start snap-always" />
-
       <div className="mx-auto max-w-5xl">
         <h2 id="team-belief-title" className="text-[24px] font-bold leading-[1.2] tracking-[-0.025em] text-SkyBlue">
           What we believe

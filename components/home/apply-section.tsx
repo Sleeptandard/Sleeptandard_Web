@@ -4,7 +4,7 @@ import { NormalCard } from '@/components/ui/normal-card'
 
 export function ApplySection() {
   return (
-    <section className="relative flex min-h-svh w-full items-center justify-center bg-KeyReal px-5 py-16">
+    <section className="relative flex min-h-svh w-full snap-center items-center justify-center bg-KeyReal px-5 py-16">
       <div className="mx-auto w-full max-w-xl">
         <h2 className="text-center font-display text-[24px] font-medium leading-[1.35] tracking-[-0.025em] text-White">
           더 빠르고, 더 자세히
@@ -13,7 +13,7 @@ export function ApplySection() {
         </h2>
 
         <div className="mt-8 space-y-7">
-          <NormalCard className="snap-center snap-always rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+          <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
             <div className="flex items-center gap-5 sm:gap-7">
               <div className="flex w-[84px] shrink-0 items-center justify-center sm:w-28">
                 <Image
@@ -48,7 +48,7 @@ export function ApplySection() {
           </NormalCard>
 
           <div className="relative">
-            <NormalCard className="snap-center snap-always rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+            <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
               <div className="flex items-center gap-5 sm:gap-7">
                 <div className="flex w-[84px] shrink-0 items-center justify-center sm:w-28">
                   <Image

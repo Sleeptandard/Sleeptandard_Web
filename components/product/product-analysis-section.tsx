@@ -6,17 +6,15 @@ function AnalysisBlock({
   image,
   imageAlt,
   aspectClass,
-  snap = true,
 }: {
   title: string
   description: React.ReactNode
   image: string
   imageAlt: string
   aspectClass: string
-  snap?: boolean
 }) {
   return (
-    <div className={snap ? 'scroll-mt-12 snap-center snap-always' : undefined}>
+    <div>
       <h3 className="text-[18px] font-medium leading-normal text-SkyBlue">
         {title}
       </h3>
@@ -40,9 +38,9 @@ function AnalysisBlock({
 
 export function ProductAnalysisSection() {
   return (
-    <section data-split-snap className="relative w-full bg-Key px-5 py-20 text-White md:py-24">
+    <section className="relative w-full bg-Key px-5 py-20 text-White md:py-24">
       <div className="mx-auto w-full max-w-2xl">
-        <div className="scroll-mt-24 snap-center snap-always">
+        <div>
           <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
             실시간 수면단계와
             <br />
@@ -62,7 +60,6 @@ export function ProductAnalysisSection() {
               image="/images/product/product_sleepstage.png"
               imageAlt="수면 사이클과 4class 수면 단계 그래프"
               aspectClass="aspect-[3/2]"
-              snap={false}
             />
           </div>
         </div>

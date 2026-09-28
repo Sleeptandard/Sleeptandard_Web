@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function ProductPersonalizationSection() {
   return (
-    <section data-split-snap className="w-full bg-Key px-5 py-20 text-White md:py-24">
+    <section className="w-full bg-Key px-5 py-20 text-White md:py-24">
       <div className="mx-auto w-full max-w-2xl">
         <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
           쓰면 쓸수록
@@ -10,7 +10,7 @@ export function ProductPersonalizationSection() {
           개인화되는 알람
         </h2>
 
-        <div className="relative mx-auto mt-10 aspect-[566/384] w-full max-w-[566px] scroll-mt-12 snap-center snap-always">
+        <div className="relative mx-auto mt-10 aspect-[566/384] w-full max-w-[566px]">
           <Image
             src="/images/product/product_personal.png"
             alt="심박, 호흡, 체온을 분석해 개인화되는 모습"
@@ -20,7 +20,7 @@ export function ProductPersonalizationSection() {
           />
         </div>
 
-        <div className="relative mx-auto mt-10 aspect-[590/398] w-full max-w-[590px] scroll-mt-12 snap-center snap-always">
+        <div className="relative mx-auto mt-10 aspect-[590/398] w-full max-w-[590px]">
           <Image
             src="/images/product/product_feedbackscore.png"
             alt="1일차 20점에서 40일차 60점으로 상승하는 피드백 점수"

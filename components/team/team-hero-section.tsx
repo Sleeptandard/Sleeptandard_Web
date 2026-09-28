@@ -21,7 +21,7 @@ export function TeamHeroSection() {
 
     const update = () => {
       frame = 0
-      // Match the next section's snap position, including the space for the beam.
+      // Track progress from the hero into the next section.
       const start = section.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop
       const end = nextSection.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - parseFloat(getComputedStyle(nextSection).scrollMarginTop)
       const progress = Math.min(1, Math.max(0, (scroller.scrollTop - start) / Math.max(1, end - start)))
@@ -53,7 +53,7 @@ export function TeamHeroSection() {
     <section
       ref={sectionRef}
       aria-labelledby="team-hero-title"
-      className="relative flex h-svh min-h-[560px] snap-start snap-always flex-col overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 text-White"
+      className="relative flex h-svh min-h-[560px] flex-col overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 text-White"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 mx-auto max-w-6xl select-none">
         <Image

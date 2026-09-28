@@ -64,7 +64,7 @@ const TEAM_MEMBERS = [
 
 export default function TeamPage() {
   return (
-    <div data-team-scroll className="h-svh w-full snap-y snap-proximity overflow-x-hidden overflow-y-auto overscroll-y-contain scroll-smooth bg-KeyReal [scrollbar-width:none] motion-reduce:scroll-auto [&::-webkit-scrollbar]:hidden">
+    <div data-team-scroll className="h-svh w-full overflow-x-hidden overflow-y-auto overscroll-y-contain scroll-smooth bg-KeyReal [scrollbar-width:none] motion-reduce:scroll-auto [&::-webkit-scrollbar]:hidden">
       <TeamHeroSection />
 
       <TeamBeliefSection />

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ProductPage() {
   return (
-    <div className="h-svh w-full snap-y snap-mandatory overflow-x-hidden overflow-y-scroll overscroll-y-contain scroll-smooth bg-background font-sans text-foreground [&>section:not([data-split-snap])]:scroll-mt-12 [&>section:not([data-split-snap])]:snap-center [&>section:not([data-split-snap])]:snap-always">
+    <div className="h-svh w-full overflow-x-hidden overflow-y-scroll overscroll-y-contain scroll-smooth bg-background font-sans text-foreground">
       <ProductHeroSection />
       <ProductMorningSection />
       <ProductWakeTimingSection />
