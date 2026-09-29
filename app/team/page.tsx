@@ -65,14 +65,14 @@ const TEAM_MEMBERS = [
 
 export default function TeamPage() {
   return (
-    <PageScrollContainer data-team-scroll="" className="h-svh w-full overflow-x-hidden overflow-y-auto scroll-smooth bg-KeyReal motion-reduce:scroll-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
+    <PageScrollContainer className="w-full overflow-x-clip bg-KeyReal">
       <TeamHeroSection />
 
       <TeamBeliefSection />
 
       {/* 3. Team Section */}
-      <section aria-labelledby="team-members-title" className="bg-White py-[68px] text-Key sm:py-24">
-        <div className="mx-auto max-w-[640px]">
+      <section aria-labelledby="team-members-title" className="team-members bg-White py-[68px] text-Key sm:py-24">
+        <div className="desktop-container mx-auto max-w-[640px]">
           <div className="text-center">
             <div className="flex items-center gap-5">
               <span aria-hidden="true" className="h-[6px] flex-1 bg-KeyReal" />
@@ -87,7 +87,7 @@ export default function TeamPage() {
           </div>
 
           {/* 5 Member Rows */}
-          <div className="mt-16 space-y-[60px] sm:space-y-20">
+          <div className="team-member-grid mt-16 space-y-[60px] sm:space-y-20">
             {TEAM_MEMBERS.map((member) => (
               <TeamPortrait
                 key={member.name}

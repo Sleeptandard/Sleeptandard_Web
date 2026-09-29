@@ -4,16 +4,16 @@ import { NormalCard } from '@/components/ui/normal-card'
 
 export function ApplySection() {
   return (
-    <section className="relative flex min-h-svh w-full snap-center items-center justify-center bg-KeyReal px-5 py-16">
-      <div className="mx-auto w-full max-w-xl">
+    <section className="home-apply relative flex min-h-svh w-full snap-center items-center justify-center bg-KeyReal px-5 py-16">
+      <div className="desktop-container mx-auto w-full max-w-xl">
         <h2 className="text-center font-display text-[24px] font-medium leading-[1.35] tracking-[-0.025em] text-White">
           더 빠르고, 더 자세히
           <br />
           <span className="text-SkyBlue">알람의 정석</span>을 만나보세요
         </h2>
 
-        <div className="mt-8 space-y-7">
-          <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+        <div className="apply-card-grid mt-8 space-y-7">
+          <NormalCard className="apply-choice-card rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
             <div className="flex items-center gap-5 sm:gap-7">
               <div className="flex w-[84px] shrink-0 items-center justify-center sm:w-28">
                 <Image
@@ -29,9 +29,9 @@ export function ApplySection() {
                   개발 소식 뉴스레터
                 </h3>
                 <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em]">
-                  알람의 정석이 만들어지는 과정과
+                  알람의 정석이 만들어지는 과정과{' '}
                   <br />
-                  주요 업데이트 소식을 뉴스레터로
+                  주요 업데이트 소식을 뉴스레터로{' '}
                   <br />
                   가장 먼저 받아보세요
                 </p>
@@ -48,7 +48,7 @@ export function ApplySection() {
           </NormalCard>
 
           <div className="relative">
-            <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+            <NormalCard className="apply-choice-card rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
               <div className="flex items-center gap-5 sm:gap-7">
                 <div className="flex w-[84px] shrink-0 items-center justify-center sm:w-28">
                   <Image
@@ -66,7 +66,7 @@ export function ApplySection() {
                   <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em]">
                     알람의 정석을 무료로 직접 사용
                     <br />
-                    해보고, 더 나은 제품을 만드는
+                    해보고, 더 나은 제품을 만드는{' '}
                     <br />
                     과정에 함께해주세요
                   </p>

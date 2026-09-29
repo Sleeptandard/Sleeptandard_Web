@@ -47,6 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
+      data-scroll-behavior="smooth"
       className={`bg-background ${pretendard.variable} ${notoSansKr.variable} ${spaceGrotesk.variable}`}
     >
       <body className="antialiased font-sans">

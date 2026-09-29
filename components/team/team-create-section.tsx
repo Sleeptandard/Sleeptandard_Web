@@ -4,7 +4,7 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function TeamCreateSection() {
   return (
-    <section aria-labelledby="team-create-title" className="bg-KeyReal px-5 py-[68px] text-center text-White sm:py-24">
+    <section aria-labelledby="team-create-title" className="team-create bg-KeyReal px-5 py-[68px] text-center text-White sm:py-24">
       <div className="mx-auto w-full max-w-xl">
         <h2 id="team-create-title" className="text-[24px] font-bold leading-[1.2] tracking-[-0.025em] text-SkyBlue">
           What we create

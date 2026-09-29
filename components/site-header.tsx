@@ -90,12 +90,12 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-Key transition-transform duration-300 ease-out',
+        'site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-Key transition-transform duration-300 ease-out',
         isVisible ? 'translate-y-0' : '-translate-y-full',
       )}
       style={{ colorScheme: 'only light' }}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <div className="site-header-inner mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link
           href="/"
           className="flex items-center"
@@ -124,6 +124,7 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? 'page' : undefined}
                 className={cn(
                   'rounded-full px-4 py-2 text-sm font-medium transition-colors',
                   active
@@ -136,10 +137,6 @@ export function SiteHeader() {
             )
           })}
         </nav>
-
-        <div className="hidden md:block">
-          {/* Apply button is now part of the nav links or we can keep it as a highlighted CTA. I'll remove it since user requested 4 items. */}
-        </div>
 
         <button
           type="button"

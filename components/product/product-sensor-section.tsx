@@ -15,7 +15,7 @@ const RIGHT_SENSORS = [
 
 function SensorItem({ icon, label }: { icon: string; label: string }) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="sensor-item flex items-center gap-3">
       <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-KeyReal">
         <Image src={icon} alt="" width={28} height={28} className="size-7 object-contain" />
       </span>
@@ -28,8 +28,8 @@ function SensorItem({ icon, label }: { icon: string; label: string }) {
 
 export function ProductSensorSection() {
   return (
-    <section className="relative min-h-[80svh] w-full bg-Key px-5 py-20 text-White md:px-7 md:py-24">
-      <div className="mx-auto w-full max-w-3xl">
+    <section className="product-sensors relative min-h-[80svh] w-full bg-Key px-5 py-20 text-White md:px-7 md:py-24">
+      <div className="desktop-container mx-auto w-full max-w-3xl">
         <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
           수면 중 몸의
           <br />
@@ -37,12 +37,12 @@ export function ProductSensorSection() {
         </h2>
 
         <p className="mt-5 text-[14px] font-normal leading-[1.45] tracking-[-0.02em] text-Gray2">
-          알람의 정석 웨어러블이 매일 밤 당신의 생체 신호를
+          알람의 정석 웨어러블이 매일 밤 당신의 생체 신호를{' '}
           <br />
           정밀하게 분석합니다.
         </p>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-5 sm:gap-x-16">
+        <div className="sensor-grid mt-12 grid grid-cols-2 gap-x-5 sm:gap-x-16">
           <div className="flex flex-col gap-6">
             {LEFT_SENSORS.map((sensor) => (
               <SensorItem key={sensor.icon} {...sensor} />

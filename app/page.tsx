@@ -8,7 +8,7 @@ import { PageScrollContainer } from '@/components/ui/page-scroll-container'
 
 export default function HomePage() {
   return (
-    <PageScrollContainer className="h-svh w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden [&>section]:snap-always">
+    <PageScrollContainer className="home-scroll w-full">
       <HeroSection />
       <ProductSection />
       <ApplySection />

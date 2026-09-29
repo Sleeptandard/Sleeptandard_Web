@@ -12,9 +12,8 @@ export function TeamHeroSection() {
     const section = sectionRef.current
     const beam = beamRef.current
     const dot = dotRef.current
-    const scroller = section?.closest<HTMLElement>('[data-team-scroll]')
     const nextSection = section?.nextElementSibling
-    if (!section || !beam || !dot || !scroller || !(nextSection instanceof HTMLElement)) return
+    if (!section || !beam || !dot || !(nextSection instanceof HTMLElement)) return
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     let frame = 0
@@ -22,9 +21,10 @@ export function TeamHeroSection() {
     const update = () => {
       frame = 0
       // Track progress from the hero into the next section.
-      const start = section.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop
-      const end = nextSection.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - parseFloat(getComputedStyle(nextSection).scrollMarginTop)
-      const progress = Math.min(1, Math.max(0, (scroller.scrollTop - start) / Math.max(1, end - start)))
+      const scrollTop = window.scrollY
+      const start = section.getBoundingClientRect().top + scrollTop
+      const end = nextSection.getBoundingClientRect().top + scrollTop - parseFloat(getComputedStyle(nextSection).scrollMarginTop)
+      const progress = Math.min(1, Math.max(0, (scrollTop - start) / Math.max(1, end - start)))
 
       beam.style.opacity = String(progress)
       dot.style.transform = `translateY(${(reducedMotion.matches ? 1 : progress) * beam.clientHeight}px)`
@@ -35,16 +35,16 @@ export function TeamHeroSection() {
     }
 
     const observer = new ResizeObserver(scheduleUpdate)
-    observer.observe(scroller)
     observer.observe(section)
-    scroller.addEventListener('scroll', scheduleUpdate, { passive: true })
+    observer.observe(nextSection)
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
     reducedMotion.addEventListener('change', scheduleUpdate)
     update()
 
     return () => {
       cancelAnimationFrame(frame)
       observer.disconnect()
-      scroller.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('scroll', scheduleUpdate)
       reducedMotion.removeEventListener('change', scheduleUpdate)
     }
   }, [])
@@ -53,7 +53,7 @@ export function TeamHeroSection() {
     <section
       ref={sectionRef}
       aria-labelledby="team-hero-title"
-      className="relative flex h-svh min-h-[560px] flex-col overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 text-White"
+      className="team-hero relative flex h-svh min-h-[560px] flex-col overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 text-White"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 mx-auto max-w-6xl select-none">
         <Image

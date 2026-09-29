@@ -2,8 +2,8 @@ import { ContactForm } from '@/components/contact-form'
 
 export default function ContactPage() {
   return (
-    <main data-submit-container className="flex min-h-screen flex-col bg-White px-5 pt-28 sm:pt-36">
-      <div className="mx-auto w-full max-w-xl flex-1">
+    <div data-submit-container className="form-page flex min-h-screen flex-col bg-White px-5 pt-28 sm:pt-36">
+      <div className="form-page-content mx-auto w-full max-w-xl flex-1">
         <div className="text-left">
           <h1 className="text-[40px] font-bold leading-[1.2] tracking-[-0.035em] text-KeyReal">
             Contact us
@@ -19,6 +19,6 @@ export default function ContactPage() {
 
         <ContactForm />
       </div>
-    </main>
+    </div>
   )
 }

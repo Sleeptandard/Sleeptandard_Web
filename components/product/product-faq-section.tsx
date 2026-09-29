@@ -2,7 +2,7 @@ import { ProductFaqAccordion } from '@/components/product/faq-accordion'
 
 export function ProductFaqSection() {
   return (
-    <section className="flex min-h-svh w-full flex-col bg-White px-5 py-[clamp(48px,11svh,100px)]">
+    <section className="product-faq flex min-h-svh w-full flex-col bg-White px-5 py-[clamp(48px,11svh,100px)]">
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col">
         <h2 className="mb-8 text-[24px] font-semibold leading-normal text-Key">FAQ</h2>
         <ProductFaqAccordion />

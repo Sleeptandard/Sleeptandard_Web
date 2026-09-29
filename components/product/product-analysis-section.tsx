@@ -38,8 +38,8 @@ function AnalysisBlock({
 
 export function ProductAnalysisSection() {
   return (
-    <section className="relative w-full bg-Key px-5 py-20 text-White md:py-24">
-      <div className="mx-auto w-full max-w-2xl">
+    <section className="product-analysis relative w-full bg-Key px-5 py-20 text-White md:py-24">
+      <div className="desktop-container mx-auto w-full max-w-2xl">
         <div>
           <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
             실시간 수면단계와
@@ -52,7 +52,8 @@ export function ProductAnalysisSection() {
             <br />
             실시간으로 분석해 사용자의 수면 상태를 추론합니다.
           </p>
-
+        </div>
+        <div className="analysis-grid">
           <div className="mt-12">
             <AnalysisBlock
               title="수면단계 분석"
@@ -62,14 +63,12 @@ export function ProductAnalysisSection() {
               aspectClass="aspect-[3/2]"
             />
           </div>
-        </div>
-
-        <div className="mt-10">
+          <div className="mt-10">
           <AnalysisBlock
             title="각성도 분석"
             description={
               <>
-                3대 각성 지표 연산을 통해 현재 몸이
+                3대 각성 지표 연산을 통해 현재 몸이{' '}
                 <br />
                 얼마나 깨기 쉬운 상태인지 판별
               </>
@@ -78,6 +77,7 @@ export function ProductAnalysisSection() {
             imageAlt="현재 각성도와 3대 각성 지표"
             aspectClass="aspect-[3/2]"
           />
+          </div>
         </div>
 
         <div className="mt-12">

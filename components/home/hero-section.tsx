@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import { HeroLine } from '@/components/home/hero-line'
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pt-16">
+    <section className="home-hero relative flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pt-16">
       <Image
         src="/images/home/home_glassicon1.png"
         alt=""
@@ -43,12 +44,7 @@ export function HeroSection() {
           다시 세웁니다
         </h1>
 
-        <div
-          aria-hidden="true"
-          className="relative mt-8 h-[1px] w-[246px] bg-[linear-gradient(90deg,#FFFFFF_0%,rgba(4,47,86,0.5)_50%,#FFFFFF_100%)]"
-        >
-          <span className="absolute left-0 top-1/2 size-[5px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_5px_rgba(255,255,255,0.6)]" />
-        </div>
+        <HeroLine />
       </div>
     </section>
   )

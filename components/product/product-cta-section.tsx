@@ -4,7 +4,7 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function ProductCtaSection() {
   return (
-    <section className="relative h-svh w-full overflow-hidden bg-Key px-5 text-White">
+    <section className="product-cta relative h-svh w-full overflow-hidden bg-Key px-5 text-White">
       <div
         aria-hidden="true"
         className="absolute bottom-[-74px] left-1/2 h-[148px] w-[calc(100%+20px)] max-w-[760px] -translate-x-1/2 rounded-[50%] bg-KeyReal shadow-[0_-4px_150px_150px_#042F56]"

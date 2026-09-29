@@ -4,7 +4,7 @@ import { Mail } from 'lucide-react'
 export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 bg-card/40">
-      <div className="mx-auto max-w-6xl px-5 py-14">
+      <div className="site-footer-inner mx-auto max-w-6xl px-5 py-14">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="max-w-sm">
             <div className="flex items-center gap-2">

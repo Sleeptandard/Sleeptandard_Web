@@ -3,7 +3,7 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function ContactSection() {
   return (
-    <section className="flex min-h-80svh w-full snap-center items-center justify-center bg-White px-5 py-16">
+    <section className="home-contact flex min-h-80svh w-full snap-center items-center justify-center bg-White px-5 py-16">
       <div className="mx-auto flex w-full max-w-xl flex-col items-center text-center">
         <p className="text-[18px] leading-[1.45] text-Key font-medium">
           Sleeptandard와 나누고 싶은 이야기가 있나요?

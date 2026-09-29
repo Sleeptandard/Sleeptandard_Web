@@ -17,8 +17,9 @@ export default function ApplyPage() {
   const [view, setView] = useState<ApplyView>('hub')
 
   return (
-    <main
+    <div
       data-submit-container
+      data-apply-view={view}
       className={
         view === 'hub'
           ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-20 pt-32 text-White sm:pb-28 sm:pt-40'
@@ -29,7 +30,7 @@ export default function ApplyPage() {
           : 'min-h-screen bg-[#f5f5f5] px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
       }
     >
-      <div className={`mx-auto w-full max-w-xl ${view === 'newsletter' || view === 'betatest' ? 'flex-1' : ''}`}>
+      <div className={`apply-page-content mx-auto w-full max-w-xl ${view === 'newsletter' || view === 'betatest' ? 'flex-1' : ''}`}>
         {/* ========================================================
             VIEW 1: Apply Hub (APPLY1_m.png)
             ======================================================== */}
@@ -43,8 +44,8 @@ export default function ApplyPage() {
               </h1>
             </div>
 
-            <div className="mt-10 space-y-9 sm:mt-12">
-              <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+            <div className="apply-card-grid mt-10 space-y-9 sm:mt-12">
+              <NormalCard className="apply-choice-card rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
                 <div className="flex items-center gap-5 sm:gap-7">
                   <div className="flex w-[84px] flex-shrink-0 items-center justify-center sm:w-28">
                     <Image
@@ -60,9 +61,9 @@ export default function ApplyPage() {
                       개발 소식 뉴스레터
                     </h2>
                     <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em] text-White">
-                      알람의 정석이 만들어지는 과정과
+                      알람의 정석이 만들어지는 과정과{' '}
                       <br />
-                      주요 업데이트 소식을 뉴스레터로
+                      주요 업데이트 소식을 뉴스레터로{' '}
                       <br />
                       가장 먼저 받아보세요
                     </p>
@@ -84,7 +85,7 @@ export default function ApplyPage() {
               </NormalCard>
 
               <div className="relative">
-                <NormalCard className="rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
+                <NormalCard className="apply-choice-card rounded-[28px] px-5 pb-7 pt-8 sm:px-8">
                   <div className="flex items-center gap-5 sm:gap-7">
                     <div className="flex w-[84px] flex-shrink-0 items-center justify-center sm:w-28">
                       <Image
@@ -102,7 +103,7 @@ export default function ApplyPage() {
                       <p className="mt-2 text-[14px] font-medium leading-[1.25] tracking-[-0.025em] text-White">
                         알람의 정석을 무료로 직접 사용
                         <br />
-                        해보고, 더 나은 제품을 만드는
+                        해보고, 더 나은 제품을 만드는{' '}
                         <br />
                         과정에 함께해주세요
                       </p>
@@ -339,6 +340,6 @@ export default function ApplyPage() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 }

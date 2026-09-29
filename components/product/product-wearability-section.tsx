@@ -55,7 +55,7 @@ const FEATURES = [
 
 export function ProductWearabilitySection() {
   return (
-    <section className="relative h-[90svh] w-full overflow-hidden bg-Key">
+    <section className="product-wearability relative h-[90svh] w-full overflow-hidden bg-Key">
       <Image
         src="/images/product/product_hero_origin.png"
         alt=""
@@ -74,14 +74,14 @@ export function ProductWearabilitySection() {
       />
       <div className="absolute inset-0 bg-[rgba(5,12,22,0.62)]" />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-4xl flex-col px-6 pb-6 pt-[9svh] md:px-12">
+      <div className="desktop-container relative z-10 mx-auto flex h-full w-full max-w-4xl flex-col px-6 pb-6 pt-[9svh] md:px-12">
         <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em] text-White">
           가볍게 착용하고
           <br />
           평소처럼 잠들면 됩니다
         </h2>
 
-        <div className="mt-[clamp(32px,5svh,56px)] flex flex-1 flex-col justify-center gap-2">
+        <div className="wearability-grid mt-[clamp(32px,5svh,56px)] flex flex-1 flex-col justify-center gap-2">
           {FEATURES.map((feature) => (
             <ClearCard
               key={feature.icon}

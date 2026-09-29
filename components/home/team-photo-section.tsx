@@ -4,7 +4,7 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function TeamPhotoSection() {
   return (
-    <section className="flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-KeyReal py-16">
+    <section className="home-team-photo flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-KeyReal py-16">
       <div className="mx-auto w-full max-w-xl">
         <div className="relative aspect-[360/329] w-full rounded-t-[100px] bg-White">
           <Image

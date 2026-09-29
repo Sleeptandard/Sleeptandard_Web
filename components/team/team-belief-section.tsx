@@ -20,9 +20,9 @@ export function TeamBeliefSection() {
   return (
     <section
       aria-labelledby="team-belief-title"
-      className="relative z-10 bg-KeyReal px-5 pb-[68px] pt-4 text-center text-White md:py-20"
+      className="team-belief relative z-10 bg-KeyReal px-5 pb-[68px] pt-4 text-center text-White md:py-20"
     >
-      <div className="mx-auto max-w-5xl">
+      <div className="desktop-container mx-auto max-w-5xl">
         <h2 id="team-belief-title" className="text-[24px] font-bold leading-[1.2] tracking-[-0.025em] text-SkyBlue">
           What we believe
         </h2>
@@ -47,7 +47,7 @@ export function TeamBeliefSection() {
           </p>
         </div>
 
-        <div className="mx-auto mt-11 grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3 md:gap-6">
+        <div className="team-values mx-auto mt-11 grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3 md:gap-6">
           {VALUE_CARDS.map((card) => (
             <article
               key={card.title}

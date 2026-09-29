@@ -2,15 +2,15 @@ import Image from 'next/image'
 
 export function ProductPersonalizationSection() {
   return (
-    <section className="w-full bg-Key px-5 py-20 text-White md:py-24">
-      <div className="mx-auto w-full max-w-2xl">
+    <section className="product-personalization w-full bg-Key px-5 py-20 text-White md:py-24">
+      <div className="desktop-container mx-auto w-full max-w-2xl">
         <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
           쓰면 쓸수록
           <br />
           개인화되는 알람
         </h2>
 
-        <div className="relative mx-auto mt-10 aspect-[566/384] w-full max-w-[566px]">
+        <div className="personal-visual relative mx-auto mt-10 aspect-[566/384] w-full max-w-[566px]">
           <Image
             src="/images/product/product_personal.png"
             alt="심박, 호흡, 체온을 분석해 개인화되는 모습"
@@ -20,7 +20,7 @@ export function ProductPersonalizationSection() {
           />
         </div>
 
-        <div className="relative mx-auto mt-10 aspect-[590/398] w-full max-w-[590px]">
+        <div className="feedback-visual relative mx-auto mt-10 aspect-[590/398] w-full max-w-[590px]">
           <Image
             src="/images/product/product_feedbackscore.png"
             alt="1일차 20점에서 40일차 60점으로 상승하는 피드백 점수"
@@ -30,7 +30,7 @@ export function ProductPersonalizationSection() {
           />
         </div>
 
-        <div className="mt-12 space-y-4 text-[12px] font-normal leading-[1.5] tracking-[-0.015em] text-Gray">
+        <div className="personal-copy mt-12 space-y-4 text-[12px] font-normal leading-[1.5] tracking-[-0.015em] text-Gray">
           <p>
             사람마다 심박, 움직임, 체온과 같은{' '}
             <strong className="font-medium text-Gray2">생체신호</strong>의 기준은 다릅니다.

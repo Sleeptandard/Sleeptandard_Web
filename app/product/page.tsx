@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ProductPage() {
   return (
-    <PageScrollContainer className="h-svh w-full overflow-x-hidden overflow-y-scroll scroll-smooth bg-background font-sans text-foreground md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
+    <PageScrollContainer className="w-full overflow-x-clip bg-background font-sans text-foreground">
       <ProductHeroSection />
       <ProductMorningSection />
       <ProductWakeTimingSection />

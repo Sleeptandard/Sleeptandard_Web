@@ -4,26 +4,26 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function ProductSection() {
   return (
-    <section className="relative flex min-h-[70svh] w-full snap-center items-center justify-center bg-KeyReal px-5 py-12">
+    <section className="home-product relative flex min-h-[70svh] w-full snap-center items-center justify-center bg-KeyReal px-5 py-12">
       <div
         aria-hidden="true"
         className="absolute inset-0 rounded-b-[50px] bg-White"
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[max(42svh,320px)] w-full max-w-2xl flex-col justify-center">
+      <div className="desktop-container relative z-10 mx-auto flex min-h-[max(42svh,320px)] w-full max-w-2xl flex-col justify-center">
         <h2 className="text-center font-display text-[26px] font-medium leading-[1.35] tracking-[-0.025em] text-Key">
           우리가 가장 먼저 바꾸고 싶은 건,
           <br />
           <strong className="font-bold">아침</strong>입니다
         </h2>
 
-        <div className="mt-10 grid min-h-[210px] w-full grid-cols-[46%_54%] overflow-hidden rounded-[28px] bg-[#E6EEF4] sm:min-h-[240px]">
+        <div className="home-product-card mt-10 grid min-h-[210px] w-full grid-cols-[46%_54%] overflow-hidden rounded-[28px] bg-[#E6EEF4] sm:min-h-[240px]">
           <div className="relative min-h-full overflow-hidden rounded-[28px]">
             <Image
               src="/images/home/home_potch1.png"
               alt="알람의 정석 웨어러블 기기"
               fill
-              sizes="(max-width: 640px) 46vw, 300px"
+              sizes="(min-width: 1024px) 720px, (max-width: 640px) 46vw, 300px"
               className="object-cover"
             />
           </div>
@@ -37,7 +37,7 @@ export function ProductSection() {
               className="h-auto w-full max-w-[165px]"
             />
             <p className="mt-5 text-[14px] text-semibold text-left leading-[1.45] text-Key">
-              최적의 기상 타이밍으로,
+              최적의 기상 타이밍으로,{' '}
               <br />
               가장 개운한 아침을 만나보세요
             </p>

@@ -20,14 +20,14 @@ const MORNING_ITEMS = [
 
 export function ProductMorningSection() {
   return (
-    <section className="relative flex min-h-svh w-full flex-col overflow-hidden bg-White">
+    <section className="product-morning relative flex min-h-svh w-full flex-col overflow-hidden bg-White">
       <div aria-hidden="true" className="relative h-[94px] shrink-0 overflow-hidden">
         <div className="absolute left-1/2 top-[-62px] h-[150px] w-[calc(100%+48px)] max-w-[900px] -translate-x-1/2 rounded-[50%] bg-[linear-gradient(180deg,#7096AA_0%,var(--KeyReal)_80%)]" />
         <span className="absolute bottom-[25px] left-1/2 size-1 -translate-x-1/2 rounded-full bg-white shadow-[0_0_6px_4px_rgba(255,255,255,0.45)]" />
         <span className="absolute bottom-[8px] left-1/2 size-[7px] -translate-x-1/2 rounded-full bg-white shadow-[0_0_6px_5px_rgba(255,255,255,0.6)]" />
       </div>
 
-      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-5 py-6 text-center">
+      <div className="desktop-container mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-5 py-6 text-center">
         <p className="text-[12px] font-medium leading-normal text-Gray">
           About Morning
         </p>
@@ -37,7 +37,7 @@ export function ProductMorningSection() {
           익숙하지 않으신가요?
         </h2>
 
-        <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-6 md:mx-auto md:w-full md:max-w-3xl">
+        <div className="morning-card-grid mt-10 grid grid-cols-3 gap-3 sm:gap-6 md:mx-auto md:w-full md:max-w-3xl">
           {MORNING_ITEMS.map((item) => (
             <article key={item.src} className="min-w-0">
               <div className="relative aspect-square w-full overflow-hidden rounded-[22px]">
@@ -45,7 +45,7 @@ export function ProductMorningSection() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 768px) 30vw, 220px"
+                  sizes="(min-width: 1024px) 360px, (max-width: 768px) 30vw, 220px"
                   className="object-cover"
                 />
               </div>

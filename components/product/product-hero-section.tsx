@@ -3,7 +3,7 @@ import { NormalButton } from '@/components/ui/normal-button'
 
 export function ProductHeroSection() {
   return (
-    <section className="relative min-h-svh w-full overflow-hidden bg-[#e9e4de]">
+    <section className="product-hero relative min-h-svh w-full overflow-hidden bg-[#e9e4de]">
       <Image
         src="/images/product/product_hero_origin.png"
         alt="침구 위에 놓인 알람의 정석 웨어러블 디바이스"
@@ -24,7 +24,7 @@ export function ProductHeroSection() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/5" />
 
-      <div className="relative z-10 mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center px-5 pb-[12svh] pt-[calc(4rem+8svh)] text-center md:px-12 lg:px-20">
+      <div className="product-hero-content relative z-10 mx-auto flex min-h-svh w-full max-w-7xl flex-col items-center px-5 pb-[12svh] pt-[calc(4rem+8svh)] text-center md:px-12 lg:px-20">
         <div className="flex flex-col items-center">
           <p className="text-[16px] font-semibold leading-normal text-KeyPrint">
             실시간 수면 상태 기반 웨어러블 알람

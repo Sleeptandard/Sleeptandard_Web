@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 export function ProductOptimalWakeSection() {
   return (
-    <section className="relative flex min-h-[75svh] w-full bg-Key px-5 py-20 text-White md:py-24">
-      <div className="mx-auto flex w-full max-w-2xl flex-col">
+    <section className="product-optimal-wake relative flex min-h-[75svh] w-full bg-Key px-5 py-20 text-White md:py-24">
+      <div className="desktop-container mx-auto flex w-full max-w-2xl flex-col">
         <h2 className="text-[24px] font-semibold leading-[1.35] tracking-[-0.025em]">
-          분석한 수면 상태를 기반으로,
+          분석한 수면 상태를 기반으로,{' '}
           <br />
           최적의 기상 타이밍에 깨워드립니다
         </h2>
