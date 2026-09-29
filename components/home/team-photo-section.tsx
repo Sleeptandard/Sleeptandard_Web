@@ -1,18 +1,22 @@
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { NormalButton } from '@/components/ui/normal-button'
+import { HomeRevealSection } from '@/components/home/home-reveal-section'
 
 export function TeamPhotoSection() {
   return (
-    <section className="home-team-photo flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-KeyReal py-16">
+    <HomeRevealSection name="team-photo" className="home-team-photo flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-KeyReal py-16">
       <div className="mx-auto w-full max-w-xl">
-        <div className="relative aspect-[360/329] w-full rounded-t-[100px] bg-White">
+        <div className="relative aspect-[360/329] w-full rounded-t-[100px]">
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden rounded-t-[100px]">
+            <div className="home-team-photo-background home-reveal-target absolute inset-0 bg-White" />
+          </div>
           <Image
             src="/images/home/home_teamphoto.png"
             alt="Sleeptandard 팀원 다섯 명"
             width={1080}
             height={1137}
-            className="absolute left-1/2 top-4 h-auto w-[100%] max-w-none -translate-x-1/2"
+            className="home-team-photo-image home-reveal-target absolute left-1/2 top-4 h-auto w-[100%] max-w-none -translate-x-1/2"
           />
         </div>
 
@@ -27,6 +31,6 @@ export function TeamPhotoSection() {
           </NormalButton>
         </div>
       </div>
-    </section>
+    </HomeRevealSection>
   )
 }

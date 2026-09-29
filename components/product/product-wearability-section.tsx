@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { ClearCard } from '@/components/ui/clear-card'
+import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 const FEATURES = [
   {
@@ -81,11 +82,11 @@ export function ProductWearabilitySection() {
           평소처럼 잠들면 됩니다
         </h2>
 
-        <div className="wearability-grid mt-[clamp(32px,5svh,56px)] flex flex-1 flex-col justify-center gap-2">
+        <ScrollReveal name="product-wearability" className="wearability-grid scroll-reveal-cards mt-[clamp(32px,5svh,56px)] flex flex-1 flex-col justify-center gap-2">
           {FEATURES.map((feature) => (
             <ClearCard
               key={feature.icon}
-              className={`flex h-[clamp(100px,12svh,120px)] w-[52%] max-w-[210px] flex-col items-center justify-center gap-2.5 rounded-[24px] p-4 text-center ${feature.align}`}
+              className={`scroll-reveal-item flex h-[clamp(100px,12svh,120px)] w-[52%] max-w-[210px] flex-col items-center justify-center gap-2.5 rounded-[24px] p-4 text-center ${feature.align}`}
             >
               <Image
                 src={feature.icon}
@@ -99,7 +100,7 @@ export function ProductWearabilitySection() {
               </p>
             </ClearCard>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )

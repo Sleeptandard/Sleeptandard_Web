@@ -1,8 +1,9 @@
 import { NormalCard } from '@/components/ui/normal-card'
+import { HomeRevealSection } from '@/components/home/home-reveal-section'
 
 export function TeamMessageSection() {
   return (
-    <section className="home-team-message flex min-h-80svh w-full snap-center items-center justify-center bg-KeyReal px-5 py-20">
+    <HomeRevealSection name="team-message" className="home-team-message flex min-h-80svh w-full snap-center items-center justify-center bg-KeyReal px-5 py-20">
       <div className="desktop-container mx-auto w-full max-w-xl">
         <div className="text-center">
           <p className="text-[16px] leading-normal text-Gray2 font-medium">
@@ -16,17 +17,17 @@ export function TeamMessageSection() {
         </div>
 
         <div className="home-values mt-12 flex flex-col gap-8">
-          <NormalCard className="flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-start rounded-[30px] p-0 text-[16px] font-bold text-White">
+          <NormalCard className="home-reveal-target flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-start rounded-[30px] p-0 text-[16px] font-bold text-White">
             QUESTION
           </NormalCard>
-          <NormalCard className="flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-end rounded-[30px] p-0 text-[16px] font-bold text-White">
+          <NormalCard className="home-reveal-target flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-end rounded-[30px] p-0 text-[16px] font-bold text-White">
             APPLY
           </NormalCard>
-          <NormalCard className="flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-start rounded-[30px] p-0 text-[16px] font-bold text-White">
+          <NormalCard className="home-reveal-target flex h-[78px] w-[65%] max-w-[320px] items-center justify-center self-start rounded-[30px] p-0 text-[16px] font-bold text-White">
             REDEFINE
           </NormalCard>
         </div>
       </div>
-    </section>
+    </HomeRevealSection>
   )
 }
