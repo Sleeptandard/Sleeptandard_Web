@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { HeroLine } from '@/components/home/hero-line'
+import { HomeRevealSection } from '@/components/home/home-reveal-section'
 
 export function HeroSection() {
   return (
-    <section className="home-hero relative flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pt-16">
+    <HomeRevealSection name="hero" className="home-hero relative flex min-h-svh w-full snap-center items-center justify-center overflow-hidden bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pt-16">
       <Image
         src="/images/home/home_glassicon1.png"
         alt=""
@@ -32,13 +33,13 @@ export function HeroSection() {
         className="pointer-events-none absolute bottom-[-58px] right-[-62px] h-auto w-[clamp(218px,28vw,360px)] select-none"
       />
 
-      <div className="relative z-10 flex flex-col items-center text-center gap-2">
-        <p className="text-[18px] leading-normal text-Gray2">
+      <div className="home-hero-content relative z-10 flex flex-col items-center text-center gap-2">
+        <p className="home-hero-copy home-reveal-target text-[18px] leading-normal text-Gray2">
           We are Sleeptandard.
         </p>
-        <div aria-hidden="true" className="mt-3 h-[2px] w-[46px] bg-Gray2" />
+        <div aria-hidden="true" className="home-hero-copy home-reveal-target mt-3 h-[2px] w-[46px] bg-Gray2" />
 
-        <h1 className="mt-4 font-display text-[40px] font-bold leading-[1.2] tracking-[-0.03em] text-White">
+        <h1 className="home-hero-copy home-reveal-target mt-4 font-display text-[40px] font-bold leading-[1.2] tracking-[-0.03em] text-White">
           수면의 기준을
           <br />
           다시 세웁니다
@@ -46,6 +47,6 @@ export function HeroSection() {
 
         <HeroLine />
       </div>
-    </section>
+    </HomeRevealSection>
   )
 }

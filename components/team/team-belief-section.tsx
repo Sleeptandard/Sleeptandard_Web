@@ -1,3 +1,5 @@
+import { ScrollReveal } from '@/components/ui/scroll-reveal'
+
 const VALUE_CARDS = [
   {
     title: 'QUESTION',
@@ -22,23 +24,23 @@ export function TeamBeliefSection() {
       aria-labelledby="team-belief-title"
       className="team-belief relative z-10 bg-KeyReal px-5 pb-[68px] pt-4 text-center text-White md:py-20"
     >
-      <div className="desktop-container mx-auto max-w-5xl">
-        <h2 id="team-belief-title" className="text-[24px] font-bold leading-[1.2] tracking-[-0.025em] text-SkyBlue">
+      <ScrollReveal name="team-belief-copy" anchorSelector="#team-belief-title" className="team-belief-copy desktop-container mx-auto max-w-5xl">
+        <h2 id="team-belief-title" className="belief-text scroll-reveal-item text-[24px] font-bold leading-[1.2] tracking-[-0.025em] text-SkyBlue">
           What we believe
         </h2>
-        <p className="mt-4 text-balance text-[18px] font-semibold leading-[1.4] tracking-[-0.035em]">
+        <p className="belief-text scroll-reveal-item mt-4 text-balance text-[18px] font-semibold leading-[1.4] tracking-[-0.035em]">
           우리는 수면도 달라질 수 있다고 믿습니다
         </p>
 
         <div className="mx-auto mt-11 max-w-2xl space-y-11 text-[14px] font-medium leading-[1.2] tracking-[-0.035em]">
-          <p>
+          <p className="belief-text scroll-reveal-item" data-reveal-step="2">
             오랫동안 당연하게 여겨온 수면의 방식에 질문을 던졌습니다.
             <br />
             수면은 인생의 3분의 1을 차지하지만,
             <br />
             우리는 여전히 예전과 다르지 않은 방식으로 잠을 잡니다.
           </p>
-          <p>
+          <p className="belief-text scroll-reveal-item" data-reveal-step="3">
             Sleeptandard는 수면 측정과 분석에 그치지 않습니다.
             <br />
             실제 삶에 적용할 수 있는 새로운 방식을 만들고,
@@ -47,11 +49,11 @@ export function TeamBeliefSection() {
           </p>
         </div>
 
-        <div className="team-values mx-auto mt-11 grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3 md:gap-6">
+        <ScrollReveal name="team-belief-cards" anchorSelector="article:nth-child(2)" className="team-values scroll-reveal-cards mx-auto mt-11 grid max-w-sm grid-cols-1 gap-4 md:max-w-none md:grid-cols-3 md:gap-6">
           {VALUE_CARDS.map((card) => (
             <article
               key={card.title}
-              className="relative isolate flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#001C35_0%,#001C35_47%,#06264F_100%)] px-5 py-9"
+              className="scroll-reveal-item relative isolate flex min-h-[160px] flex-col items-center justify-center overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#001C35_0%,#001C35_47%,#06264F_100%)] px-5 py-9"
             >
               <span
                 aria-hidden="true"
@@ -71,8 +73,8 @@ export function TeamBeliefSection() {
               <p className="mt-4 text-[16px] font-medium leading-[1.2] tracking-[-0.025em]">{card.description}</p>
             </article>
           ))}
-        </div>
-      </div>
+        </ScrollReveal>
+      </ScrollReveal>
     </section>
   )
 }
