@@ -18,17 +18,18 @@ export default function ApplyPage() {
 
   return (
     <main
+      data-submit-container
       className={
         view === 'hub'
           ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-20 pt-32 text-White sm:pb-28 sm:pt-40'
           : view === 'newsletter_done' || view === 'betatest_done'
             ? 'min-h-svh bg-[linear-gradient(180deg,var(--Key)_0%,var(--KeyReal)_100%)] px-5 pb-8 pt-20 text-White sm:pb-12 sm:pt-24'
           : view === 'newsletter' || view === 'betatest'
-            ? 'min-h-screen bg-White px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
+            ? 'flex min-h-screen flex-col bg-White px-5 pt-28 sm:pt-36'
           : 'min-h-screen bg-[#f5f5f5] px-5 pb-20 pt-28 sm:pb-28 sm:pt-36'
       }
     >
-      <div className="mx-auto max-w-xl">
+      <div className={`mx-auto w-full max-w-xl ${view === 'newsletter' || view === 'betatest' ? 'flex-1' : ''}`}>
         {/* ========================================================
             VIEW 1: Apply Hub (APPLY1_m.png)
             ======================================================== */}

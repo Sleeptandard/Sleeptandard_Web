@@ -150,7 +150,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="mt-10 pb-24 sm:mt-12">
+    <form id="contact-form" onSubmit={handleSubmit} noValidate className="mt-10 pb-24 sm:mt-12">
       <div className="space-y-4">
         <FormInputField
           id="contact-name"
@@ -248,6 +248,7 @@ export function ContactForm() {
 
       <FixedSubmitButton
         type="submit"
+        form="contact-form"
         disabled={isSubmitting}
       >
         {isSubmitting && (

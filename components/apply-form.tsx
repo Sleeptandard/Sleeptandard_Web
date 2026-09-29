@@ -139,7 +139,7 @@ export function ApplyForm({ type, onSuccess }: ApplyFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5 pb-24">
+    <form id={`${type}-apply-form`} onSubmit={handleSubmit} noValidate className="mt-8 space-y-5 pb-24">
       <FormInputField
         id={`${type}-name`}
         name="name"
@@ -223,6 +223,7 @@ export function ApplyForm({ type, onSuccess }: ApplyFormProps) {
 
       <FixedSubmitButton
         type="submit"
+        form={`${type}-apply-form`}
         disabled={isSubmitting}
       >
         {isSubmitting && (

@@ -4,16 +4,17 @@ import { HeroSection } from '@/components/home/hero-section'
 import { ProductSection } from '@/components/home/product-section'
 import { TeamMessageSection } from '@/components/home/team-message-section'
 import { TeamPhotoSection } from '@/components/home/team-photo-section'
+import { PageScrollContainer } from '@/components/ui/page-scroll-container'
 
 export default function HomePage() {
   return (
-    <div className="h-svh w-full snap-y snap-mandatory overflow-y-scroll overscroll-y-contain scroll-smooth [&>section]:snap-always">
+    <PageScrollContainer className="h-svh w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden [&>section]:snap-always">
       <HeroSection />
       <ProductSection />
       <ApplySection />
       <TeamMessageSection />
       <TeamPhotoSection />
       <ContactSection />
-    </div>
+    </PageScrollContainer>
   )
 }

@@ -3,6 +3,7 @@ import { TeamPortrait } from '@/components/team/team-portrait'
 import { TeamHeroSection } from '@/components/team/team-hero-section'
 import { TeamBeliefSection } from '@/components/team/team-belief-section'
 import { TeamCreateSection } from '@/components/team/team-create-section'
+import { PageScrollContainer } from '@/components/ui/page-scroll-container'
 
 export const metadata: Metadata = {
   title: 'Team | Sleeptandard',
@@ -64,7 +65,7 @@ const TEAM_MEMBERS = [
 
 export default function TeamPage() {
   return (
-    <div data-team-scroll className="h-svh w-full overflow-x-hidden overflow-y-auto overscroll-y-contain scroll-smooth bg-KeyReal [scrollbar-width:none] motion-reduce:scroll-auto [&::-webkit-scrollbar]:hidden">
+    <PageScrollContainer data-team-scroll="" className="h-svh w-full overflow-x-hidden overflow-y-auto scroll-smooth bg-KeyReal motion-reduce:scroll-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
       <TeamHeroSection />
 
       <TeamBeliefSection />
@@ -103,6 +104,6 @@ export default function TeamPage() {
       </section>
 
       <TeamCreateSection />
-    </div>
+    </PageScrollContainer>
   )
 }

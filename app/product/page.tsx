@@ -10,6 +10,7 @@ import { ProductAnalysisSection } from '@/components/product/product-analysis-se
 import { ProductOptimalWakeSection } from '@/components/product/product-optimal-wake-section'
 import { ProductPersonalizationSection } from '@/components/product/product-personalization-section'
 import { ProductCtaSection } from '@/components/product/product-cta-section'
+import { PageScrollContainer } from '@/components/ui/page-scroll-container'
 
 export const metadata: Metadata = {
   title: '알람의 정석 | Sleeptandard',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ProductPage() {
   return (
-    <div className="h-svh w-full overflow-x-hidden overflow-y-scroll overscroll-y-contain scroll-smooth bg-background font-sans text-foreground">
+    <PageScrollContainer className="h-svh w-full overflow-x-hidden overflow-y-scroll scroll-smooth bg-background font-sans text-foreground md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
       <ProductHeroSection />
       <ProductMorningSection />
       <ProductWakeTimingSection />
@@ -31,6 +32,6 @@ export default function ProductPage() {
       <ProductCtaSection />
 
       <ProductFaqSection />
-    </div>
+    </PageScrollContainer>
   )
 }
