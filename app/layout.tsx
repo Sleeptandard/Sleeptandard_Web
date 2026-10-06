@@ -59,6 +59,17 @@ export const metadata: Metadata = {
       '슬립텐다드는 당연하게 여겨온 수면의 방식을 다시 바라봅니다. 그 시작으로, 더 개운한 아침을 위한 웨어러블 알람 ‘알람의 정석’을 만들고 있습니다.',
     images: ['/sleeptandardOGimage.png'],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
 }
 
 export const viewport: Viewport = {
