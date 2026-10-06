@@ -1,4 +1,29 @@
+import type { Metadata } from 'next'
 import { ContactForm } from '@/components/contact-form'
+
+export const metadata: Metadata = {
+  title: '문의하기 | Sleeptandard',
+  description: '협업, 제휴, 제품 등 Sleeptandard에 궁금한 점이 있다면 편하게 문의를 남겨주세요.',
+  openGraph: {
+    title: '문의하기 | Sleeptandard',
+    description: '협업, 제휴, 제품 등 Sleeptandard에 궁금한 점이 있다면 편하게 문의를 남겨주세요.',
+    url: '/contact',
+    images: [
+      {
+        url: '/sleeptandardOGimage.png',
+        width: 1200,
+        height: 630,
+        alt: '문의하기 | Sleeptandard',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '문의하기 | Sleeptandard',
+    description: '협업, 제휴, 제품 등 Sleeptandard에 궁금한 점이 있다면 편하게 문의를 남겨주세요.',
+    images: ['/sleeptandardOGimage.png'],
+  },
+}
 
 export default function ContactPage() {
   return (

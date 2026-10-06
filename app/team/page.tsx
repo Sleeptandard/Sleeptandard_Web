@@ -7,7 +7,29 @@ import { PageScrollContainer } from '@/components/ui/page-scroll-container'
 
 export const metadata: Metadata = {
   title: 'Team | Sleeptandard',
-  description: '더 나은 수면의 기준을 만들어가는 Sleeptandard 팀을 소개합니다.',
+  description:
+    '더 나은 수면의 기준을 만들어가는 사람들. 기술과 경험을 연결해 실제 삶에 적용할 수 있는 새로운 방식을 만들어갑니다.',
+  openGraph: {
+    title: 'Team | Sleeptandard',
+    description:
+      '더 나은 수면의 기준을 만들어가는 사람들. 기술과 경험을 연결해 실제 삶에 적용할 수 있는 새로운 방식을 만들어갑니다.',
+    url: '/team',
+    images: [
+      {
+        url: '/sleeptandardOGimage.png',
+        width: 1200,
+        height: 630,
+        alt: 'Team | Sleeptandard',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Team | Sleeptandard',
+    description:
+      '더 나은 수면의 기준을 만들어가는 사람들. 기술과 경험을 연결해 실제 삶에 적용할 수 있는 새로운 방식을 만들어갑니다.',
+    images: ['/sleeptandardOGimage.png'],
+  },
 }
 
 const TEAM_MEMBERS = [

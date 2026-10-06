@@ -28,32 +28,36 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sleeptandard.com'),
-  title: 'Sleeptandard',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://sleeptandard.com'),
+  title: {
+    default: 'Sleeptandard | 수면의 새로운 기준을 세우다',
+    template: '%s',
+  },
   description:
-    '수면 상태 기반 웨어러블 알람 패치. 실시간으로 수면 중 생체 신호를 분석해 최적의 기상 타이밍에 깨워드립니다.',
-  generator: 'v0.app',
+    '슬립텐다드는 당연하게 여겨온 수면의 방식을 다시 바라봅니다. 그 시작으로, 더 개운한 아침을 위한 웨어러블 알람 ‘알람의 정석’을 만들고 있습니다.',
   openGraph: {
-    type: 'website',
+    title: 'Sleeptandard | 수면의 새로운 기준을 세우다',
+    description:
+      '슬립텐다드는 당연하게 여겨온 수면의 방식을 다시 바라봅니다. 그 시작으로, 더 개운한 아침을 위한 웨어러블 알람 ‘알람의 정석’을 만들고 있습니다.',
+    url: 'https://sleeptandard.com',
     siteName: 'Sleeptandard',
-    title: 'Sleeptandard',
-    // Keep a blank description tag instead of falling back to the SEO description.
-    description: ' ',
+    locale: 'ko_KR',
+    type: 'website',
     images: [
       {
-        url: '/images/share-thumbnail.png',
-        width: 512,
-        height: 149,
-        alt: 'Sleeptandard',
-        type: 'image/png',
+        url: '/sleeptandardOGimage.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sleeptandard | 수면의 새로운 기준을 세우다',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sleeptandard',
-    description: ' ',
-    images: ['/images/share-thumbnail.png'],
+    title: 'Sleeptandard | 수면의 새로운 기준을 세우다',
+    description:
+      '슬립텐다드는 당연하게 여겨온 수면의 방식을 다시 바라봅니다. 그 시작으로, 더 개운한 아침을 위한 웨어러블 알람 ‘알람의 정석’을 만들고 있습니다.',
+    images: ['/sleeptandardOGimage.png'],
   },
 }
 
