@@ -1,0 +1,258 @@
+/* Separate surface/text roles from the fixed navy brand palette. */
+:root {
+  --page-surface: #f5f5f5;
+  --raised-surface: #e6eef4;
+  --page-ink: #050c16;
+  --page-heading: #042f56;
+  --page-muted: #616161;
+  --field-surface: #f5f5f5;
+  --field-border: #a3a3a3;
+  --field-placeholder: #707070;
+  --terms-surface: #efefef;
+  --focus-color: #0967bc;
+  --card-edge: transparent;
+  --normal-card-background: linear-gradient(135deg, #001c35 0%, #001c35 40%, #06254b 100%);
+  --belief-card-background: linear-gradient(135deg, #001c35 0%, #001c35 47%, #06264f 100%);
+  --newsletter-card-background: linear-gradient(135deg, #001c35 0%, #001c35 50%, #06254c 100%);
+  --beta-card-background: #001c35;
+  --value-icon-opacity: 1;
+  --clear-card-background: linear-gradient(135deg, rgba(194,228,233,0) 0%, rgba(5,12,22,0.2) 100%);
+  --button-background: linear-gradient(135deg, #0967bc 0%, #064279 66%, #042f56 100%);
+  --button-border: #f5f5f5;
+  --badge-background: linear-gradient(135deg, #088aff, #005caf);
+  --photo-stage: #f5f5f5;
+  --portrait-line: #042f56;
+  --media-edge: transparent;
+  --logo-on-surface-filter: none;
+  --dark-icon-filter: none;
+  --device-halo: none;
+  --portrait-halo: none;
+  --device-glow: transparent;
+  --chart-canvas: transparent;
+  --chart-padding: 0px;
+  --hero-photo-overlay: linear-gradient(180deg, rgba(255,255,255,0.2), transparent 60%, rgba(0,0,0,0.05));
+  --hero-photo-ink: #163b60;
+  --hero-side-overlay: var(--hero-photo-overlay);
+  --morning-arch: linear-gradient(180deg, #042f56 0%, #8095a9 51%, #ffffff 100%);
+  --comparison-muted: linear-gradient(135deg, rgba(4,47,86,0), rgba(97,97,97,0.7));
+  --comparison-positive: linear-gradient(135deg, rgba(4,47,86,0), #0a3f6e);
+  --comparison-accent: #0a3f6e;
+  --success-surface: #ecfdf5;
+  --success-ink: #059669;
+}
+
+/* CSS fallback also renders correctly before hydration or without JavaScript. */
+@media (prefers-color-scheme: dark) {
+  html:root:not([data-theme='light']) {
+  color-scheme: dark;
+  --page-surface: #0d1929;
+  --raised-surface: #192d43;
+  --page-ink: #edf4fc;
+  --page-heading: #addaff;
+  --page-muted: #b5c7d9;
+  --field-surface: #15253a;
+  --field-border: #6f849c;
+  --field-placeholder: #aabed2;
+  --terms-surface: #15253a;
+  --focus-color: #86caff;
+  --card-edge: #668bb0;
+  --normal-card-background: linear-gradient(135deg, #102a43 0%, #102a43 40%, #1b4265 100%);
+  --belief-card-background: var(--normal-card-background);
+  --newsletter-card-background: var(--normal-card-background);
+  --beta-card-background: var(--normal-card-background);
+  --value-icon-opacity: 0.75;
+  --clear-card-background: linear-gradient(135deg, rgba(31,60,84,0.92), rgba(13,29,47,0.94));
+  --button-background: linear-gradient(135deg, #116bbc 0%, #125389 66%, #104773 100%);
+  --button-border: #9dd5ff;
+  --badge-background: linear-gradient(135deg, #1268ad, #08467a);
+  --photo-stage: #263e55;
+  --portrait-line: #5887b0;
+  --media-edge: #4b7094;
+  --logo-on-surface-filter: brightness(0) invert(1);
+  --dark-icon-filter: brightness(0) saturate(100%) invert(87%) sepia(16%) saturate(535%) hue-rotate(171deg);
+  --device-halo: drop-shadow(0 0 14px rgba(157,207,255,0.48));
+  --portrait-halo: drop-shadow(0 0 5px rgba(152,195,234,0.28));
+  --device-glow: radial-gradient(ellipse, rgba(82,141,193,0.3), transparent 70%);
+  --chart-canvas: #e4edf5;
+  --chart-padding: 12px;
+  --hero-photo-overlay: linear-gradient(180deg, rgba(5,12,22,0.88) 0%, rgba(5,12,22,0.72) 32%, rgba(5,12,22,0.08) 62%, rgba(5,12,22,0.34) 100%);
+  --hero-photo-ink: #f1f7ff;
+  --hero-side-overlay: linear-gradient(90deg, rgba(5,12,22,0.92), rgba(5,12,22,0.78) 40%, rgba(5,12,22,0.08) 75%);
+  --morning-arch: linear-gradient(180deg, #174e7b 0%, #203c57 60%, #0d1929 100%);
+  --comparison-muted: linear-gradient(135deg, #213248, #354a61);
+  --comparison-positive: linear-gradient(135deg, #174366, #1b547e);
+  --comparison-accent: #b4e2ff;
+  --success-surface: #153d38;
+  --success-ink: #86efc6;
+  --Gray: #adbed0;
+  --Gray2: #d0dfed;
+  --Red: #ff8d99;
+  --SkyBlue: #c9ebff;
+  --muted-foreground: #b2c2d6;
+  --border: #4c6580;
+  }
+}
+
+html:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page-surface: #0d1929;
+  --raised-surface: #192d43;
+  --page-ink: #edf4fc;
+  --page-heading: #addaff;
+  --page-muted: #b5c7d9;
+  --field-surface: #15253a;
+  --field-border: #6f849c;
+  --field-placeholder: #aabed2;
+  --terms-surface: #15253a;
+  --focus-color: #86caff;
+  --card-edge: #668bb0;
+  --normal-card-background: linear-gradient(135deg, #102a43 0%, #102a43 40%, #1b4265 100%);
+  --belief-card-background: var(--normal-card-background);
+  --newsletter-card-background: var(--normal-card-background);
+  --beta-card-background: var(--normal-card-background);
+  --value-icon-opacity: 0.75;
+  --clear-card-background: linear-gradient(135deg, rgba(31,60,84,0.92), rgba(13,29,47,0.94));
+  --button-background: linear-gradient(135deg, #116bbc 0%, #125389 66%, #104773 100%);
+  --button-border: #9dd5ff;
+  --badge-background: linear-gradient(135deg, #1268ad, #08467a);
+  --photo-stage: #263e55;
+  --portrait-line: #5887b0;
+  --media-edge: #4b7094;
+  --logo-on-surface-filter: brightness(0) invert(1);
+  --dark-icon-filter: brightness(0) saturate(100%) invert(87%) sepia(16%) saturate(535%) hue-rotate(171deg);
+  --device-halo: drop-shadow(0 0 14px rgba(157,207,255,0.48));
+  --portrait-halo: drop-shadow(0 0 5px rgba(152,195,234,0.28));
+  --device-glow: radial-gradient(ellipse, rgba(82,141,193,0.3), transparent 70%);
+  --chart-canvas: #e4edf5;
+  --chart-padding: 12px;
+  --hero-photo-overlay: linear-gradient(180deg, rgba(5,12,22,0.88) 0%, rgba(5,12,22,0.72) 32%, rgba(5,12,22,0.08) 62%, rgba(5,12,22,0.34) 100%);
+  --hero-photo-ink: #f1f7ff;
+  --hero-side-overlay: linear-gradient(90deg, rgba(5,12,22,0.92), rgba(5,12,22,0.78) 40%, rgba(5,12,22,0.08) 75%);
+  --morning-arch: linear-gradient(180deg, #174e7b 0%, #203c57 60%, #0d1929 100%);
+  --comparison-muted: linear-gradient(135deg, #213248, #354a61);
+  --comparison-positive: linear-gradient(135deg, #174366, #1b547e);
+  --comparison-accent: #b4e2ff;
+  --success-surface: #153d38;
+  --success-ink: #86efc6;
+  --Gray: #adbed0;
+  --Gray2: #d0dfed;
+  --Red: #ff8d99;
+  --SkyBlue: #c9ebff;
+  --muted-foreground: #b2c2d6;
+  --border: #4c6580;
+}
+
+html:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* Existing brand utilities now distinguish paper backgrounds from white ink. */
+.bg-White { background-color: var(--page-surface); }
+.text-Key { color: var(--page-ink); }
+.text-KeyReal { color: var(--page-heading); }
+[class~='text-Key/80'] { color: var(--page-muted); }
+
+.site-header { background-color: #050c16; }
+.site-header-inner { gap: 12px; }
+.site-header-inner > nav { margin-left: auto; }
+.theme-control {
+  color-scheme: dark;
+  width: 76px;
+  min-height: 36px;
+  flex-shrink: 0;
+  margin-left: auto;
+  border: 1px solid #60758b;
+  border-radius: 12px;
+  background: #122337;
+  color: #f1f7ff;
+  padding: 6px;
+  font: inherit;
+  font-size: 12px;
+}
+@media (min-width: 768px) { .theme-control { margin-left: 0; } }
+@media (min-width: 1024px) {
+  .site-header nav { gap: 4px; }
+  .site-header nav a { padding-inline: 12px; }
+}
+:where(a, button, select, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 3px;
+}
+.site-footer { background: #0b1523; color: #edf4fc; }
+
+/* Card edges stay visible on both the navy and the darker page surfaces. */
+.normal-card, .clear-card, .apply-info-card, .team-values article {
+  outline: 1px solid var(--card-edge);
+  outline-offset: -1px;
+}
+.team-values article { background: var(--belief-card-background); }
+[data-apply-view='newsletter'] .apply-info-card { background: var(--newsletter-card-background); }
+[data-apply-view='betatest'] .apply-info-card { background: var(--beta-card-background); }
+.team-values article > span { opacity: var(--value-icon-opacity); }
+.home-product-card, .product-faq [role='region'] {
+  background: var(--raised-surface);
+  border-color: var(--field-border);
+  color: var(--page-ink);
+}
+.home-product-card { box-shadow: inset 0 0 0 1px var(--media-edge); }
+.home-product-card img[src$='/home_logo.png'] { filter: var(--logo-on-surface-filter); }
+.home-contact [role='img'], .product-faq [role='img'] { background-color: var(--page-heading); }
+.product-faq button { box-shadow: inset 0 0 0 1px var(--button-border); }
+.submit-bar { box-shadow: inset 0 1px 0 var(--card-edge), 0 -8px 24px rgba(5,12,22,0.2); }
+.recruitment-badge { background: var(--badge-background); }
+
+/* Native controls, entered values, placeholders and error states are explicit. */
+.site-field {
+  background-color: var(--field-surface);
+  border-color: var(--field-border);
+  color: var(--page-ink);
+  caret-color: var(--page-heading);
+}
+.site-field::placeholder { color: var(--field-placeholder); opacity: 1; }
+.site-field:focus { border-color: var(--focus-color); color: var(--page-ink); }
+.site-field[aria-invalid='true'] { color: var(--Red); border-color: var(--Red); }
+.site-field[aria-invalid='true']::placeholder { color: var(--Red); }
+.site-field:autofill {
+  box-shadow: 0 0 0 1000px var(--field-surface) inset;
+  -webkit-text-fill-color: var(--page-ink);
+}
+.terms-panel { background: var(--terms-surface); border-color: var(--field-border); color: var(--page-muted); }
+input[type='checkbox']:checked + span { background: #1465a5; border-color: #91ccff; }
+img[src^='/ui/ui_chevron_'] { filter: var(--dark-icon-filter); }
+.contact-success { background: var(--raised-surface); border-color: var(--field-border); }
+.contact-success :is(h2, p, p span) { color: var(--page-ink); }
+.contact-success > div:first-child { background: var(--success-surface); color: var(--success-ink); }
+.kakao-button { color: #171717; background: #ffeb3b; }
+
+/* Keep photography intact; provide contrast around it instead of dimming it. */
+.home-team-photo-background { background-color: var(--photo-stage); }
+.team-member-grid article > div:first-child {
+  background: var(--device-glow);
+  border-radius: 48% 48% 0 0;
+}
+.team-member-grid img, .home-team-photo-image { filter: var(--portrait-halo); }
+.team-members .bg-KeyReal { background-color: var(--portrait-line); }
+img[src$='/home_potch2.png'], img[src$='/home_potch3.png'], img[src$='/product_potch_big.png'] {
+  filter: var(--device-halo);
+}
+.device-visual { background: var(--device-glow); }
+.product-hero-overlay { background: var(--hero-photo-overlay); }
+@media (min-width: 1024px) {
+  .product-hero-overlay { background: var(--hero-side-overlay); }
+}
+.product-hero-content > div:first-child p { color: var(--hero-photo-ink); }
+.product-hero-content h1 img { filter: var(--logo-on-surface-filter); }
+.morning-card-grid article > div { box-shadow: 0 0 0 1px var(--media-edge); }
+.morning-transition { background: var(--morning-arch); }
+
+/* This diagram has dark lettering baked into the PNG: retain a light canvas. */
+.wake-chart { background: var(--chart-canvas); border-radius: 20px; }
+.wake-chart img { padding: var(--chart-padding); }
+.wake-comparison > div:last-child { background: var(--raised-surface); border-color: var(--field-border); }
+.wake-comparison img { filter: var(--dark-icon-filter); }
+.wake-comparison [class~='text-[#616161]'] { color: var(--page-muted); }
+.wake-comparison [class~='text-[#0A3F6E]'] { color: var(--comparison-accent); }
+.analysis-grid img, .personal-visual img, .feedback-visual img {
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px var(--media-edge);
+}
