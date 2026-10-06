@@ -28,10 +28,33 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://sleeptandard.com'),
   title: 'Sleeptandard',
   description:
     '수면 상태 기반 웨어러블 알람 패치. 실시간으로 수면 중 생체 신호를 분석해 최적의 기상 타이밍에 깨워드립니다.',
   generator: 'v0.app',
+  openGraph: {
+    type: 'website',
+    siteName: 'Sleeptandard',
+    title: 'Sleeptandard',
+    // Keep a blank description tag instead of falling back to the SEO description.
+    description: ' ',
+    images: [
+      {
+        url: '/images/share-thumbnail.png',
+        width: 512,
+        height: 149,
+        alt: 'Sleeptandard',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sleeptandard',
+    description: ' ',
+    images: ['/images/share-thumbnail.png'],
+  },
 }
 
 export const viewport: Viewport = {
