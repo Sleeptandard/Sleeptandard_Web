@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://sleeptandard.com'),
   title: 'Sleeptandard',
   description:
-    '수면 상태 기반 웨어러블 알람 패치. 실시간으로 수면 중 생체 신호를 분석해 최적의 기상 타이밍에 깨워드립니다.',
+    '',
   generator: 'v0.app',
   openGraph: {
     type: 'website',
